@@ -29,7 +29,7 @@ I'm also the lead guitar of [Tokamak Disruption](https://tokamak-disruption.netl
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ISA Transactions</div><img src='images/p1.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ISA Trans</div><img src='images/p1.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Towards pilot's situation awareness enhancement: A framework of adaptive interaction system and its realization](https://doi.org/10.1016/j.isatra.2022.12.005)
@@ -41,7 +41,7 @@ Weiwei Yu, **Dian Jin**, Feng Zhao, Xiaokun Zhang
 </div>
 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Computer Methods and Programs in Biomedicine</div><img src='images/p2.png' alt="Computer Methods and Programs in Biomedicine" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CMPB</div><img src='images/p2.png' alt="Computer Methods and Programs in Biomedicine" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Towards tacit knowledge mining within context: Visual cognitive graph model and eye movement image interpretation](https://doi.org/10.1016/j.cmpb.2022.107107)
@@ -54,18 +54,9 @@ Weiwei Yu, **Dian Jin**, Wenfeng Cai, Feng Zhao, Xiaokun Zhang
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">International Conference on Human-Computer Interaction 2022</div><img src='images/p3.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
 
-[To Discover Novice Expert Paradigm: Sequence-Based Time-Domain and Graph-Based Frequency-Domain Analysis Method of Eye Movement](https://doi.org/10.1007/978-3-031-17615-9_17)
 
-**Dian Jin**, Weiwei Yu, Xinliang Yang, Haiyang Wang & Ran Peng
-
-- Proposed several novel methods and perspective for eye movement data mining.
-</div>
-</div>
-
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Journal of Ambient Intelligence and Humanized Computing</div><img src='images/p6.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">JAIHC</div><img src='images/p6.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Design of syntactic adaptive interactive system based on human perception state estimation within scenario context](https://link.springer.com/article/10.1007/s12652-023-04708-4)
@@ -76,7 +67,19 @@ Weiwei Yu, **Dian Jin**, Wenfeng Cai, Feng Zhao, Xiaokun Zhang
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">IEEE Cyber Science and Technology Congress</div><img src='images/p4.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">HCII 2022</div><img src='images/p3.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[To Discover Novice Expert Paradigm: Sequence-Based Time-Domain and Graph-Based Frequency-Domain Analysis Method of Eye Movement](https://doi.org/10.1007/978-3-031-17615-9_17)
+
+**Dian Jin**, Weiwei Yu, Xinliang Yang, Haiyang Wang & Ran Peng
+
+- Proposed several novel methods and perspective for eye movement data mining.
+</div>
+</div>
+
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">IEEE CyberSciTech 2022</div><img src='images/p4.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Adaptive Visual Information Support System](https://doi.org/10.1109/DASC-PICom-CBDCom-CyberSciTech52372.2021.00084)
@@ -88,7 +91,7 @@ Weiwei Yu, **Dian Jin**, Xiaokun Zhang
 </div>
 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Computational and Mathematical Methods in Medicine</div><img src='images/p5.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CMMM</div><img src='images/p5.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Performance Index Based on Predicted Auditory Reaction Time Analysis for the Evaluation of Human-Machine Interface in Flight Control](https://doi.org/10.1155/2022/4661156)
