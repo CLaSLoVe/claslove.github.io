@@ -17,42 +17,88 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. Suspendisse condimentum, libero vel tempus mattis, risus risus vulputate libero, elementum fermentum mi neque vel nisl. Maecenas facilisis maximus dignissim. Curabitur mattis vulputate dui, tincidunt varius libero luctus eu. Mauris mauris nulla, scelerisque eget massa id, tincidunt congue felis. Sed convallis tempor ipsum rhoncus viverra. Pellentesque nulla orci, accumsan volutpat fringilla vitae, maximus sit amet tortor. Aliquam ultricies odio ut volutpat scelerisque. Donec nisl nisl, porttitor vitae pharetra quis, fringilla sed mi. Fusce pretium dolor ut aliquam consequat. Cras volutpat, tellus accumsan mattis molestie, nisl lacus tempus massa, nec malesuada tortor leo vel quam. Aliquam vel ex consectetur, vehicula leo nec, efficitur eros. Donec convallis non urna quis feugiat.
+My research interests include **Human-Computer Interaction, Human-Centered Technology, Data Modeling, Machine Learning & Deep Learning**.
 
-My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
-
+My hobbies are composing music (My album <a href='https://music.163.com/#/album?id=142705737' style='display: inline'><i><u>City</u></i></a> and <a href='https://music.163.com/#/album?id=157976839' style='display: inline'><i><u>Tiny Loops</u></i></a>) and working out.
 
 # 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2025.1*: &nbsp;🎉🎉 Started PhD studies at The Hong Kong Polytechnic University.
+- *2024.3*: &nbsp;🎉🎉 Joined the Intelligent Wearable Systems Lab at The Hong Kong Polytechnic University as a Research Assistant.
 
-# 📝 Publications 
+# 📝 Publications
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ISA Transactions</div><img src='images/p1.png' alt="ISA Transactions" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
+[Towards pilot's situation awareness enhancement: A framework of adaptive interaction system and its realization](https://doi.org/10.1016/j.isatra.2022.12.005)
 
-**Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun
-
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+[**Project**](https://doi.org/10.1016/j.isatra.2022.12.005) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
+- Proposed an Adaptive Interaction System framework.
 </div>
 </div>
 
-- [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020**
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CMPB</div><img src='images/p2.png' alt="Computer Methods and Programs in Biomedicine" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Towards tacit knowledge mining within context: Visual cognitive graph model and eye movement image interpretation](https://doi.org/10.1016/j.cmpb.2022.107107)
+
+[**Project**](https://doi.org/10.1016/j.cmpb.2022.107107) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
+- Proposed Visual cognitive graph to mine human visual tacit knowledge.
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">HCII 2022</div><img src='images/p3.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[To Discover Novice Expert Paradigm: Sequence-Based Time-Domain and Graph-Based Frequency-Domain Analysis Method of Eye Movement](https://doi.org/10.1007/978-3-031-17615-9_17)
+
+[**Project**](https://doi.org/10.1007/978-3-031-17615-9_17) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
+- Proposed several novel methods and perspective for eye movement data mining.
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">IEEE CyberSciTech</div><img src='images/p4.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Adaptive Visual Information Support System](https://doi.org/10.1109/DASC-PICom-CBDCom-CyberSciTech52372.2021.00084)
+
+[**Project**](https://doi.org/10.1109/DASC-PICom-CBDCom-CyberSciTech52372.2021.00084) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
+- Focus on what to adapt, how to adapt and when to adapt, to enhance human performance under complex context.
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CMMM</div><img src='images/p5.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Performance Index Based on Predicted Auditory Reaction Time Analysis for the Evaluation of Human-Machine Interface in Flight Control](https://doi.org/10.1155/2022/4661156)
+
+[**Project**](https://doi.org/10.1155/2022/4661156) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
+- Proposed a method for evaluating human-machine interface design using eye-tracking technology.
+</div>
+</div>
 
 # 🎖 Honors and Awards
-- *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.09* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2023*: Outstanding Graduation Thesis
+- *2023*: Outstanding Graduate Student
+- *2023*: Excellent Graduate Student, First-class Scholarship
+- *2022*: Excellent Graduate Student, First-class Scholarship
+- *2021*: Huawei Embedded Software Contest, Third Prize
+- *2021*: Graduate Electronic Design Competition, Second Prize
+- *2021*: Industrial Engineering Creative Innovation and Improvement Competition, First Prize
+- *2021*: Excellent Graduate Student, First-class Scholarship
+- *2020*: Industrial Big Data Innovation Competition, Excellent Team
+- *2020*: Summer AI+ Training Camp, Champion
+- *2020*: Outstanding Graduation Thesis
+- *2019*: Excellent Student, Second-class Scholarship
+- *2018*: Excellent Student, Second-class Scholarship
+- *2017*: Excellent Student, First-class Scholarship
 
-# 📖 Educations
-- *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+# 📖 Education
+- *2025.1 - Present*: The Hong Kong Polytechnic University, PhD Student, Research Institute for Intelligent Wearable Systems
+- *2020.8 - 2023.5*: Northwestern Polytechnical University, Master, Mechatronics Engineering
+- *2016.8 - 2020.7*: Northwestern Polytechnical University, Bachelor, Honors College
 
-# 💬 Invited Talks
-- *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/)
-
-# 💻 Internships
-- *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+# 💬 Experience
+- *2024.3 - 2024.12*: The Hong Kong Polytechnic University, Research Assistant, Intelligent Wearable Systems
+- *2023.5 - 2023.9*: Keyanquan, Academic News Intern
+- *2017.7 - 2017.8*: ChenJiaGou Hope Elementary School, Volunteer Teaching
