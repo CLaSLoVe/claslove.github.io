@@ -40,6 +40,62 @@ Weiwei Yu, **Dian Jin**, Feng Zhao, Xiaokun Zhang
 </div>
 </div>
 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CMPB</div><img src='images/p2.png' alt="Computer Methods and Programs in Biomedicine" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Towards tacit knowledge mining within context: Visual cognitive graph model and eye movement image interpretation](https://doi.org/10.1016/j.cmpb.2022.107107)
+
+
+Weiwei Yu, **Dian Jin**, Wenfeng Cai, Feng Zhao, Xiaokun Zhang
+
+
+
+[**Project**](https://doi.org/10.1016/j.cmpb.2022.107107) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
+- Proposed Visual cognitive graph to mine human visual tacit knowledge.
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">HCII 2022</div><img src='images/p3.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[To Discover Novice Expert Paradigm: Sequence-Based Time-Domain and Graph-Based Frequency-Domain Analysis Method of Eye Movement](https://doi.org/10.1007/978-3-031-17615-9_17)
+
+**Dian Jin**, Weiwei Yu, Xinliang Yang, Haiyang Wang & Ran Peng
+
+
+[**Project**](https://doi.org/10.1007/978-3-031-17615-9_17) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
+- Proposed several novel methods and perspective for eye movement data mining.
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">IEEE CyberSciTech</div><img src='images/p4.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Adaptive Visual Information Support System](https://doi.org/10.1109/DASC-PICom-CBDCom-CyberSciTech52372.2021.00084)
+
+Weiwei Yu, **Dian Jin**, Xiaokun Zhang
+
+
+[**Project**](https://doi.org/10.1109/DASC-PICom-CBDCom-CyberSciTech52372.2021.00084) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
+- Focus on what to adapt, how to adapt and when to adapt, to enhance human performance under complex context.
+</div>
+</div>
+
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CMMM</div><img src='images/p5.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Performance Index Based on Predicted Auditory Reaction Time Analysis for the Evaluation of Human-Machine Interface in Flight Control](https://doi.org/10.1155/2022/4661156)
+
+Weiwei Yu, **Dian Jin**, Xinliang Yang, Feng Zhao, Haiyang Wang, Ran Peng
+
+
+[**Project**](https://doi.org/10.1155/2022/4661156) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
+- Proposed a method for evaluating human-machine interface design using eye-tracking technology.
+</div>
+</div>
+
 # 🎖 Honors and Awards
 - *2023*: Outstanding Graduation Thesis
 - *2023*: Outstanding Graduate Student
@@ -63,6 +119,6 @@ Weiwei Yu, **Dian Jin**, Feng Zhao, Xiaokun Zhang
 - *2016.8 - 2020.7*: Northwestern Polytechnical University, Bachelor, Honors College
 
 # 💻 Internships
-- *2024.3 - 2024.12*: The Hong Kong Polytechnic University, Research Assistant, Intelligent Wearable Systems
-- *2023.5 - 2023.9*: Keyanquan, Academic News Intern
+- *2024.3 - 2024.12*: The Hong Kong Polytechnic University, Research Institute for Intelligent Wearable Systems, Research Assistant
+- *2023.5 - 2023.9*: Keyanquan, Global Science, Academic News Intern
 - *2017.7 - 2017.8*: ChenJiaGou Hope Elementary School, Volunteer Teaching
