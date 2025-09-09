@@ -126,6 +126,7 @@ Weiwei Yu, **Dian Jin**, Xinliang Yang, Feng Zhao, Haiyang Wang, Ran Peng
 - *2016.8 - 2020.7*: Northwestern Polytechnical University, Bachelor, Honors College
 
 # 💻 Internships
+- *2025.8 - 2025.9*: AISI, Beijing, Research Intern  
 - *2024.3 - 2024.12*: The Hong Kong Polytechnic University, Research Institute for Intelligent Wearable Systems, Research Assistant
 - *2023.5 - 2023.9*: Keyanquan, Global Science, Academic News Intern
 - *2017.7 - 2017.8*: ChenJiaGou Hope Elementary School, Volunteer Teaching
