@@ -1,0 +1,794 @@
+---
+layout: compress
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ site.author.name }} | Research &amp; Noise</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,600;1,400&family=Unbounded:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        /* Color Palette */
+        --bg: #ffffff;
+        --fg: #1a1a1a;       /* Softer black */
+        --subtext: #555555;
+        --accent: #0044CC;   /* International Klein Blue ish */
+        --accent-light: #e6eeff;
+        --border-light: #eeeeee;
+        --border-med: #e0e0e0;
+        --border-heavy: #050505;
+        
+        /* Typography */
+        --mono-font: 'JetBrains Mono', monospace;
+        --sans-font: 'Unbounded', sans-serif;
+        --serif-font: 'Newsreader', serif;
+        
+        /* Layout */
+        --sidebar-width: 300px;
+        --content-padding: 6rem;
+        --timeline-date-width: 160px;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        background-color: var(--bg);
+        color: var(--fg);
+        font-family: var(--serif-font);
+        font-size: 1.125rem; /* 18px */
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a { color: var(--fg); text-decoration: none; transition: all 0.2s ease; }
+      a:hover { color: var(--accent); }
+
+      /* --- Mobile Nav --- */
+      .mobile-nav {
+        display: none;
+        position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+        background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-med); z-index: 1000;
+        align-items: center; justify-content: space-between; padding: 0 1.5rem;
+      }
+      .mobile-brand { font-family: var(--sans-font); font-weight: 700; font-size: 0.9rem; }
+      .mobile-links { font-family: var(--sans-font); font-size: 0.75rem; font-weight: 600; display: flex; gap: 1rem; }
+
+      /* --- Layout Container --- */
+      .container {
+        display: flex;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      /* --- Sidebar --- */
+      .sidebar {
+        width: var(--sidebar-width);
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        padding: 5rem 2.5rem;
+        border-right: 1px solid var(--border-light);
+        display: flex; flex-direction: column; justify-content: space-between;
+        background: #fafafa;
+        flex-shrink: 0;
+      }
+
+      .brand h1 {
+        font-family: var(--sans-font); font-weight: 800; font-size: 2.25rem;
+        line-height: 1; letter-spacing: -0.04em; margin-bottom: 0.5rem;
+        color: var(--fg);
+      }
+      .brand .subtitle {
+        font-family: var(--mono-font); font-size: 0.8rem; color: #666;
+        display: block; margin-bottom: 2.5rem; line-height: 1.4;
+      }
+
+      .nav-links {
+        display: flex; flex-direction: column; gap: 1rem;
+        font-family: var(--sans-font); font-size: 0.85rem; font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .nav-item { 
+        opacity: 0.5; transition: all 0.3s; width: fit-content; position: relative;
+      }
+      .nav-item:hover, .nav-item.active { opacity: 1; color: var(--accent); transform: translateX(5px); }
+      .nav-item.active::before {
+        content: '•'; position: absolute; left: -15px; top: 0px; color: var(--accent);
+      }
+
+      .contact-info {
+        margin-top: auto; font-family: var(--mono-font); font-size: 0.7rem;
+        display: flex; flex-direction: column; gap: 0.5rem; color: #666;
+      }
+      .contact-link { border-bottom: 1px solid transparent; width: fit-content; }
+      .contact-link:hover { color: var(--accent); border-color: var(--accent); }
+
+      /* --- Main Content --- */
+      .main-content {
+        flex-grow: 1; padding: 5rem var(--content-padding); min-width: 0;
+      }
+
+      section { margin-bottom: 8rem; scroll-margin-top: 100px; }
+
+      /* Section Headers */
+      .section-header {
+        border-top: 3px solid var(--fg);
+        padding-top: 1rem;
+        margin-bottom: 3rem;
+        font-family: var(--sans-font);
+        font-weight: 700;
+        font-size: 1.75rem;
+        color: var(--fg);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      .section-num {
+        font-family: var(--mono-font); font-size: 0.9rem; color: var(--accent);
+        font-weight: 500; margin-top: 4px;
+      }
+
+      /* --- 1. About / Intro Styling (Clean Style) --- */
+      .intro-container {
+        max-width: 720px; /* Slightly narrower for better focus */
+        margin-bottom: 6rem;
+      }
+
+      /* First paragraph: lead-in style */
+      .intro-lead {
+        font-family: var(--sans-font); /* Modern sans-serif for emphasis */
+        font-size: 1.5rem;             /* Larger size for lead paragraph */
+        font-weight: 500;              /* Medium weight for stability */
+        line-height: 1.5;
+        color: var(--fg);              /* Use main foreground color */
+        margin-bottom: 2rem;           /* More spacing from following text */
+      }
+
+      /* Subsequent paragraphs: serif body text for readability */
+      .intro-text p:not(.intro-lead) {
+        font-family: var(--serif-font);
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: #444;
+        margin-bottom: 1.2rem;
+      }
+
+      /* Emphasis inside intro paragraphs */
+      .intro-text b,
+      .intro-text strong {
+        font-weight: 700;
+        color: #000;
+      }
+
+      /* --- 2. Timeline Styling (Education & Experience) --- */
+      .timeline-container {
+        position: relative;
+        padding-left: var(--timeline-date-width); /* Space for date */
+      }
+      /* The vertical line */
+      .timeline-container::before {
+        content: '';
+        position: absolute;
+        left: calc(var(--timeline-date-width) - 1px);
+        top: 10px;
+        bottom: 0;
+        width: 1px;
+        background: var(--border-med);
+      }
+
+      .timeline-block {
+        position: relative;
+        margin-bottom: 2.5rem;
+      }
+      .timeline-block:last-child { margin-bottom: 0; }
+
+      .timeline-date {
+        position: absolute;
+        left: calc(-1 * var(--timeline-date-width));
+        width: var(--timeline-date-width);
+        padding-right: 2rem;
+        text-align: right;
+        font-family: var(--mono-font);
+        font-size: 0.8rem;
+        color: var(--subtext);
+        top: 4px;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -6px; /* Center on the border line */
+        top: 8px;
+        width: 11px;
+        height: 11px;
+        background: #fff;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        z-index: 2;
+        transition: background 0.3s;
+      }
+      .timeline-block:hover .timeline-dot { background: var(--accent); }
+
+      .timeline-content {
+        padding-left: 2rem;
+      }
+      .timeline-content h3 {
+        font-family: var(--sans-font);
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        line-height: 1.3;
+      }
+      .timeline-role {
+        font-family: var(--mono-font);
+        font-size: 0.8rem;
+        color: var(--accent);
+        display: block;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+      }
+      .timeline-desc {
+        font-size: 0.95rem;
+        color: #444;
+      }
+
+      /* --- 3. News Styling --- */
+      .news-list {
+        border-left: 2px solid var(--border-light);
+      }
+      .news-item { 
+        display: flex; 
+        gap: 0.75rem; 
+        margin-bottom: 0; 
+        padding: 1rem 0 1rem 1.5rem;
+        align-items: baseline; 
+        border-left: 2px solid transparent;
+        margin-left: -2px; /* Overlay the border */
+        transition: all 0.2s;
+      }
+      .news-item:hover {
+        border-left-color: var(--accent);
+        background: linear-gradient(90deg, rgba(0,68,204,0.03) 0%, rgba(255,255,255,0) 100%);
+      }
+      .news-date { 
+        font-family: var(--mono-font); font-size: 0.8rem; color: var(--subtext); 
+        white-space: nowrap; min-width: 72px;
+      }
+      .news-text { font-size: 1rem; line-height: 1.5; }
+
+      /* --- Publications --- */
+      .pub-category {
+        font-family: var(--sans-font); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+        margin: 3.5rem 0 1.5rem 0; color: var(--subtext); display: flex; align-items: center; gap: 12px;
+      }
+      .pub-category::before { content:''; display:block; width:12px; height:2px; background:var(--accent); }
+
+      .pub-card {
+        border: 1px solid var(--border-light);
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        background: #fff;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        overflow: hidden;
+      }
+      .pub-card:hover {
+        border-color: var(--accent);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transform: translateY(-2px);
+      }
+
+      /* High-visibility flagship entries */
+      .pub-card-highlight {
+        background: #f8fbff;
+        border-color: var(--accent);
+      }
+      .pub-card-highlight:hover {
+        border-color: var(--border-med);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        transform: translateY(-3px);
+      }
+
+      /* Less prominent styling for Arxiv-only entries */
+      .pub-card-arxiv {
+        background: #fafafa;
+        border-color: var(--border-light);
+      }
+      .pub-card-arxiv:hover {
+        border-color: var(--border-med);
+        box-shadow: none;
+        transform: none;
+      }
+
+      .pub-header { padding: 1.2rem 1.5rem; cursor: pointer; position: relative; display: flex; justify-content: space-between; gap: 1rem; }
+      .pub-info { width: 100%; }
+      .pub-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.4rem; line-height: 1.3; color: var(--fg); }
+      .pub-authors { font-size: 0.95rem; color: #555; margin-bottom: 0.4rem; }
+      .pub-venue-tag {
+        display: inline-block;
+        font-family: var(--mono-font);
+        font-size: 0.7rem; 
+        background: #e8f1ff;  /* soft blue for normal level */
+        color: var(--accent);
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-weight: 500;
+      }
+
+      .pub-venue-highlight {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .pub-venue-arxiv {
+        background: #f7f7f7;
+        color: #777;
+      }
+
+      .toggle-icon {
+        width: 20px; height: 20px; flex-shrink: 0; position: relative; top: 4px;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .toggle-icon::after {
+        content: '+'; font-family: var(--mono-font); font-size: 1.2rem; color: #999; transition: 0.3s;
+      }
+      .pub-card.active .toggle-icon::after { content: '-'; color: var(--accent); transform: rotate(180deg); }
+      .pub-card.active { border-color: var(--border-med); background: #fafafa; }
+
+      .pub-details { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; border-top: 1px solid transparent; }
+      .pub-card.active .pub-details { border-top-color: var(--border-light); }
+      .pub-inner { padding: 1.5rem; font-size: 0.95rem; color: #444; line-height: 1.6; }
+
+      .btn-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; }
+      .text-btn {
+        font-family: var(--mono-font); font-size: 0.7rem; 
+        border: 1px solid var(--border-med); padding: 4px 10px; border-radius: 4px;
+        color: #333; background: #fff;
+      }
+      .text-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+
+      /* --- Awards --- */
+      /* Re-use news styling for awards */
+
+      /* --- Life / Band --- */
+      .band-card {
+        background: #0a0a0a; color: #e0e0e0; padding: 2.5rem; border-radius: 8px;
+        position: relative; overflow: hidden; min-height: 280px;
+        display: flex; flex-direction: column; justify-content: space-between;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      }
+      .noise-overlay {
+        position: absolute; top:0; left:0; width:100%; height:100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+        pointer-events: none; mix-blend-mode: overlay;
+      }
+      .solo-projects {
+        padding: 2rem; border: 1px solid var(--border-med); background: #fff; border-radius: 8px;
+      }
+
+      /* --- Footer --- */
+      footer {
+        margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--border-light);
+        font-family: var(--mono-font); font-size: 0.75rem; color: #aaa;
+        display: flex; justify-content: space-between;
+      }
+
+      /* --- Responsive Design --- */
+      @media (max-width: 900px) {
+        .mobile-nav { display: flex; }
+        .container { display: block; }
+        .sidebar { 
+          width: 100%; height: auto; position: relative; 
+          padding: 6rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--border-light); 
+        }
+        .sidebar .nav-links { display: none; } /* Hide sidebar nav on mobile */
+        .main-content { padding: 3rem 1.5rem; }
+        
+        .section-header { font-size: 1.5rem; margin-bottom: 2rem; }
+        
+        /* Mobile Timeline Fix */
+        .timeline-container { padding-left: 0; }
+        .timeline-container::before { left: 9px; } /* Line moves to left edge */
+        
+        .timeline-block { margin-left: 0; padding-left: 1.5rem; }
+        .timeline-date { 
+          position: relative; left: 0; width: auto; text-align: left; 
+          margin-bottom: 0.2rem; display: block; padding-right: 0;
+        }
+        .timeline-dot { left: 4px; top: 5px; }
+        .timeline-content { padding-left: 0.5rem; }
+
+        /* Slightly reduce lead size on smaller screens */
+        .intro-lead { font-size: 1.3rem; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="mobile-nav">
+      <div class="mobile-brand">{{ site.author.name }}</div>
+      <div class="mobile-links">
+        <a href="#news">News</a>
+        <a href="#publications">Pubs</a>
+        <a href="#experience">Exp</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <aside class="sidebar">
+        <div>
+          <div class="brand">
+            <h1>{{ site.author.name | replace: ' ', '<br>' }}</h1>
+            <span class="subtitle">{{ site.author.bio }}</span>
+          </div>
+
+          <nav class="nav-links">
+            <a href="#news" class="nav-item">01 News</a>
+            <a href="#education" class="nav-item">02 Education</a>
+            <a href="#publications" class="nav-item">03 Publications</a>
+            <a href="#experience" class="nav-item">04 Experience</a>
+            <a href="#awards" class="nav-item">05 Honors</a>
+            <a href="#life" class="nav-item">06 Life &amp; Noise</a>
+          </nav>
+        </div>
+
+        <div class="contact-info">
+          {% if site.author.location %}
+          <div>{{ site.author.location }}</div>
+          {% else %}
+          <div>Hong Kong, China</div>
+          {% endif %}
+
+          <div style="margin-top:10px;">
+          {% if site.author.email %}
+          <a href="mailto:{{ site.author.email }}" class="contact-link">Email ↗</a><br>
+          {% endif %}
+          
+          {% if site.author.github %}
+          <a href="https://github.com/{{ site.author.github }}" class="contact-link">Github ↗</a><br>
+          {% endif %}
+
+          {% if site.author.googlescholar %}
+          <a href="{{ site.author.googlescholar }}" class="contact-link">Scholar ↗</a>
+          {% endif %}
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        {% assign home = site.data.home %}
+
+        <!-- Optimized About Section -->
+        <div class="intro-container">
+          <div class="intro-text">
+            {% for p in home.about.paragraphs %}
+              {% if forloop.first %}
+                <p class="intro-lead">{{ p }}</p>
+              {% else %}
+                <p>{{ p }}</p>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <section id="news">
+          <div class="section-header">
+            <span class="section-num">01</span>
+            <span>Latest News</span>
+          </div>
+
+          <div class="news-list">
+            {% for item in home.news %}
+            <div class="news-item">
+              <span class="news-date">{{ item.date }}</span>
+              <span class="news-text">{{ item.text }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section id="education">
+          <div class="section-header">
+            <span class="section-num">02</span>
+            <span>Education</span>
+          </div>
+
+          <div class="timeline-container">
+            {% for edu in home.education %}
+            <div class="timeline-block">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">{{ edu.period }}</div>
+              <div class="timeline-content">
+                <h3>{{ edu.institution }}</h3>
+                <span class="timeline-role">{{ edu.role }}</span>
+                {% if edu.details %}
+                <div class="timeline-desc">{{ edu.details }}</div>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section id="publications">
+          <div class="section-header">
+            <span class="section-num">03</span>
+            <span>Publications</span>
+          </div>
+
+          {% assign pub_groups = home.publications | group_by: "category" %}
+          <!-- Customize your category order here -->
+          {% assign cat_order = "AI4Sci|HCI|MISC" | split:"|" %}
+
+          {% for cat in cat_order %}
+            {% for g in pub_groups %}
+              {% if g.name == cat %}
+                <div class="pub-category">
+                  {% if cat == "AI4Sci" %}
+                    AI for Science
+                  {% elsif cat == "HCI" %}
+                    Human–Computer Interaction
+                  {% elsif cat == "MISC" %}
+                    Curious &amp; Fun Research
+                  {% else %}
+                    {{ cat }}
+                  {% endif %}
+                </div>
+
+                {%- comment -%} First render high-level publications in this category {%- endcomment -%}
+                {% for pub in g.items %}
+                {% assign level = pub.level | default: 'normal' %}
+                {% assign venue_lc = pub.venue | downcase %}
+                {% if level == 'normal' and venue_lc contains 'arxiv' %}
+                  {% assign level = 'low' %}
+                {% endif %}
+                {% if level == 'high' %}
+                <div class="pub-card{% if level == 'high' %} pub-card-highlight{% elsif level == 'low' %} pub-card-arxiv{% endif %}">
+                  <div class="pub-header" onclick="togglePub(this)">
+                    <div class="pub-info">
+                      <div class="pub-title">{{ pub.title }}</div>
+                      <div class="pub-authors">{{ pub.authors | markdownify | strip_html }}</div>
+                      <span class="pub-venue-tag{% if level == 'high' %} pub-venue-highlight{% elsif level == 'low' %} pub-venue-arxiv{% endif %}">{{ pub.venue }}</span>
+                    </div>
+                    <div class="toggle-icon"></div>
+                  </div>
+                  <div class="pub-details">
+                    <div class="pub-inner">
+                      <div class="btn-row">
+                        {% if pub.pdf_url %}
+                        <a class="text-btn" href="{{ pub.pdf_url }}" target="_blank" rel="noopener">PDF</a>
+                        {% endif %}
+                        {% if pub.code_url and pub.code_url != "" %}
+                        <a class="text-btn" href="{{ pub.code_url }}" target="_blank" rel="noopener">Code</a>
+                        {% endif %}
+                        {% if pub.project_url %}
+                        <a class="text-btn" href="{{ pub.project_url }}" target="_blank" rel="noopener">Project Page</a>
+                        {% endif %}
+                      </div>
+                      {% if pub.abstract %}
+                      <p><b>Summary:</b> {{ pub.abstract }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+
+                {%- comment -%} Then render normal-level publications {%- endcomment -%}
+                {% for pub in g.items %}
+                {% assign level = pub.level | default: 'normal' %}
+                {% assign venue_lc = pub.venue | downcase %}
+                {% if level == 'normal' and venue_lc contains 'arxiv' %}
+                  {% assign level = 'low' %}
+                {% endif %}
+                {% if level == 'normal' %}
+                <div class="pub-card{% if level == 'high' %} pub-card-highlight{% elsif level == 'low' %} pub-card-arxiv{% endif %}">
+                  <div class="pub-header" onclick="togglePub(this)">
+                    <div class="pub-info">
+                      <div class="pub-title">{{ pub.title }}</div>
+                      <div class="pub-authors">{{ pub.authors | markdownify | strip_html }}</div>
+                      <span class="pub-venue-tag{% if level == 'high' %} pub-venue-highlight{% elsif level == 'low' %} pub-venue-arxiv{% endif %}">{{ pub.venue }}</span>
+                    </div>
+                    <div class="toggle-icon"></div>
+                  </div>
+                  <div class="pub-details">
+                    <div class="pub-inner">
+                      <div class="btn-row">
+                        {% if pub.pdf_url %}
+                        <a class="text-btn" href="{{ pub.pdf_url }}" target="_blank" rel="noopener">PDF</a>
+                        {% endif %}
+                        {% if pub.code_url and pub.code_url != "" %}
+                        <a class="text-btn" href="{{ pub.code_url }}" target="_blank" rel="noopener">Code</a>
+                        {% endif %}
+                        {% if pub.project_url %}
+                        <a class="text-btn" href="{{ pub.project_url }}" target="_blank" rel="noopener">Project Page</a>
+                        {% endif %}
+                      </div>
+                      {% if pub.abstract %}
+                      <p><b>Summary:</b> {{ pub.abstract }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+
+                {%- comment -%} Finally render low-level publications {%- endcomment -%}
+                {% for pub in g.items %}
+                {% assign level = pub.level | default: 'normal' %}
+                {% assign venue_lc = pub.venue | downcase %}
+                {% if level == 'normal' and venue_lc contains 'arxiv' %}
+                  {% assign level = 'low' %}
+                {% endif %}
+                {% if level == 'low' %}
+                <div class="pub-card{% if level == 'high' %} pub-card-highlight{% elsif level == 'low' %} pub-card-arxiv{% endif %}">
+                  <div class="pub-header" onclick="togglePub(this)">
+                    <div class="pub-info">
+                      <div class="pub-title">{{ pub.title }}</div>
+                      <div class="pub-authors">{{ pub.authors | markdownify | strip_html }}</div>
+                      <span class="pub-venue-tag{% if level == 'high' %} pub-venue-highlight{% elsif level == 'low' %} pub-venue-arxiv{% endif %}">{{ pub.venue }}</span>
+                    </div>
+                    <div class="toggle-icon"></div>
+                  </div>
+                  <div class="pub-details">
+                    <div class="pub-inner">
+                      <div class="btn-row">
+                        {% if pub.pdf_url %}
+                        <a class="text-btn" href="{{ pub.pdf_url }}" target="_blank" rel="noopener">PDF</a>
+                        {% endif %}
+                        {% if pub.code_url and pub.code_url != "" %}
+                        <a class="text-btn" href="{{ pub.code_url }}" target="_blank" rel="noopener">Code</a>
+                        {% endif %}
+                        {% if pub.project_url %}
+                        <a class="text-btn" href="{{ pub.project_url }}" target="_blank" rel="noopener">Project Page</a>
+                        {% endif %}
+                      </div>
+                      {% if pub.abstract %}
+                      <p><b>Summary:</b> {{ pub.abstract }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </section>
+
+        <section id="experience">
+          <div class="section-header">
+            <span class="section-num">04</span>
+            <span>Experience</span>
+          </div>
+
+          <div class="timeline-container">
+            {% for exp in home.experience %}
+            <div class="timeline-block">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">{{ exp.period }}</div>
+              <div class="timeline-content">
+                <h3>{{ exp.organization }}</h3>
+                <span class="timeline-role">{{ exp.role }}</span>
+                {% if exp.details %}
+                <div class="timeline-desc">{{ exp.details }}</div>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section id="awards">
+          <div class="section-header">
+            <span class="section-num">05</span>
+            <span>Honors &amp; Awards</span>
+          </div>
+
+          <div class="news-list">
+            {% for award in home.awards %}
+            <div class="news-item">
+              <span class="news-date">{{ award.year }}</span>
+              <span class="news-text">{{ award.text }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section id="life">
+          <div class="section-header">
+            <span class="section-num">06</span>
+            <span>Life &amp; Noise</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+            <!-- Band Card -->
+            <div class="band-card">
+              <div class="noise-overlay"></div>
+              <div style="position: relative; z-index: 2;">
+                <div style="font-family:var(--mono-font); font-size:0.7rem; margin-bottom:1rem; opacity:0.7;">{{ home.life.band.tagline }}</div>
+                <h3 style="font-family:var(--sans-font); font-size:2rem; line-height:1.1; margin-bottom:0.5rem;">{{ home.life.band.name_line1 }}<br>{{ home.life.band.name_line2 }}</h3>
+                <p style="font-size:0.9rem; opacity:0.8; margin-top:0.5rem;">{{ home.life.band.role }}</p>
+              </div>
+              <a href="{{ home.life.band.link }}" target="_blank" style="position: relative; z-index: 2; color:#fff; font-family:var(--mono-font); font-size:0.8rem; border-bottom:1px solid #fff; display:inline-block; width:fit-content;">{{ home.life.band.link_label }} ↗</a>
+            </div>
+
+            <!-- Solo Project Card -->
+            <div class="solo-projects">
+              <h3 style="font-family:var(--sans-font); font-size:1.1rem; margin-bottom:1.5rem; font-weight:700;">Solo Projects</h3>
+              <ul style="list-style:none; font-family:var(--mono-font); font-size:0.85rem;">
+                {% for project in home.life.projects %}
+                <li style="margin-bottom:1rem; display:flex; gap:10px;">
+                  <span>💿</span> 
+                  <a href="{{ project.url }}" target="_blank" style="border-bottom:1px solid var(--border-med);">{{ project.label }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          <div>© {{ 'now' | date: '%Y' }} {{ site.author.name }}</div>
+          <div>Designed with Noise</div>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      function togglePub(header) {
+        const card = header.parentElement;
+        const details = card.querySelector('.pub-details');
+        const isActive = card.classList.contains('active');
+        
+        // Close others (Optional: remove this block if you want multiple open)
+        document.querySelectorAll('.pub-card.active').forEach(c => {
+          if(c !== card) {
+            c.classList.remove('active');
+            c.querySelector('.pub-details').style.maxHeight = null;
+          }
+        });
+
+        if (isActive) {
+          card.classList.remove('active');
+          details.style.maxHeight = null;
+        } else {
+          card.classList.add('active');
+          details.style.maxHeight = details.scrollHeight + "px";
+        }
+      }
+
+      // Scroll Spy
+      const sections = document.querySelectorAll('section');
+      const navItems = document.querySelectorAll('.nav-item');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPos = window.pageYOffset;
+        
+        sections.forEach(section => {
+          if (scrollPos >= section.offsetTop - 200) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href').includes(current)) {
+            item.classList.add('active');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

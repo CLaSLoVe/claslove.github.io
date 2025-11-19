@@ -1,12 +1,14 @@
 ---
 permalink: /
 title: ""
-excerpt: ""
-author_profile: true
-redirect_from: 
+layout: landing
+author_profile: false
+redirect_from:
   - /about/
   - /about.html
 ---
+
+<!-- Content is rendered via the custom landing layout. -->
 
 {% if site.google_scholar_stats_use_cdn %}
 {% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
@@ -23,10 +25,14 @@ My hobbies are composing music (My album <a href='https://music.163.com/#/album?
 
 I'm also the lead guitar of [Tokamak Disruption](https://tokamak-disruption.netlify.app/), an alternative metal band.
 
+<span class='anchor' id='news'></span>
+
 # 🔥 News
 - *2025.8*: &nbsp;🎉🎉 Began internship at AISI, Beijing.
 - *2025.1*: &nbsp;🎉🎉 Started PhD studies at The Hong Kong Polytechnic University.
 - *2024.3*: &nbsp;🎉🎉 Joined the Intelligent Wearable Systems Lab at The Hong Kong Polytechnic University as a Research Assistant.
+
+<span class='anchor' id='publications'></span>
 
 # 📝 Publications 
 
@@ -103,6 +109,8 @@ Weiwei Yu, **Dian Jin**, Xinliang Yang, Feng Zhao, Haiyang Wang, Ran Peng
 </div>
 </div>
 
+<span class='anchor' id='awards'></span>
+
 # 🎖 Honors and Awards
 - *2023*: Outstanding Graduation Thesis
 - *2023*: Outstanding Graduate Student
@@ -120,10 +128,14 @@ Weiwei Yu, **Dian Jin**, Xinliang Yang, Feng Zhao, Haiyang Wang, Ran Peng
 - *2017*: Excellent Student, First-class Scholarship
 
 
+<span class='anchor' id='education'></span>
+
 # 📖 Education
 - *2025.1 - Present*: The Hong Kong Polytechnic University, PhD Student, Research Institute for Intelligent Wearable Systems
 - *2020.8 - 2023.5*: Northwestern Polytechnical University, Master, Mechatronics Engineering
 - *2016.8 - 2020.7*: Northwestern Polytechnical University, Bachelor, Honors College
+
+<span class='anchor' id='experience'></span>
 
 # 💻 Internships
 - *2025.8 - 2025.9*: AISI, Beijing, Research Intern  
