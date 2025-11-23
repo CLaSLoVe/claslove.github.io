@@ -19,7 +19,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-My research interests include Human-Computer Interaction (2020–2023) and AI4Sci (2025–). I also engage in collaborative research on interesting topics.
+My research interests include Human-Computer Interaction (2020–2023) and AI for Science (2025–). I also engage in collaborative research on interesting topics.
 
 My hobbies are composing music (My album <a href='https://music.163.com/#/album?id=142705737' style='display: inline'><i><u>City</u></i></a> and <a href='https://music.163.com/#/album?id=157976839' style='display: inline'><i><u>Tiny Loops</u></i></a>) and working out.
 
