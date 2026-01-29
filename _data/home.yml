@@ -5,8 +5,10 @@ about:
     - "My hobbies are composing music and working out. I am also the lead guitarist of <b>Tokamak Disruption</b>, an alternative metal band."
 
 news:
+  - date: "2026.1"
+    text: "Side Project with friends 'Automatic Stage Lighting Control' is accepted by ICLR 2026."
   - date: "2025.11"
-    text: "Our Paper MMEA is accepted by AAAI 2026."
+    text: "Our Paper 'Magnitude-Modulated Equivariant Adapter' is accepted by AAAI 2026."
   - date: "2025.8"
     text: "Began internship at AISI, Beijing."
   - date: "2025.1"
@@ -40,6 +42,15 @@ experience:
     role: "Volunteer Teaching"
 
 publications:
+  - title: "Automatic Stage Lighting Control: Is it a Rule-Driven Process or Generative Task?"
+    category: "HCI"
+    venue: "ICLR 2026"
+    level: "normal"
+    authors: "Zijian Zhao, <b>Dian Jin</b>, Zijing Zhou, Xiaoyu Zhang"
+    abstract: "Stage lighting is a vital component in live music performances, shaping an engaging experience for both musicians and audiences. In recent years, Automatic Stage Lighting Control (ASLC) has attracted growing interest due to the high costs of hiring or training professional lighting engineers. However, most existing ASLC solutions only classify music into limited categories and map them to predefined light patterns, resulting in formulaic and monotonous outcomes that lack rationality. To address this gap, this paper presents Skip-BART, an end-to-end model that directly learns from experienced lighting engineers and predict vivid, human-like stage lighting. To the best of our knowledge, this is the first work to conceptualize ASLC as a generative task rather than merely a classification problem. Our method adapts the BART model to take audio music as input and produce light hue and value (intensity) as output, incorporating a novel skip connection mechanism to enhance the relationship between music and light within the frame grid. To address the lack of available datasets, we create the first stage lighting dataset, along with several pre-training and transfer learning techniques to improve model training with limited data. We validate our method through both quantitative analysis and an human evaluation, demonstrating that Skip-BART outperforms conventional rule-based methods across all evaluation metrics and shows only a limited gap compared to real lighting engineers."
+    pdf_url: "https://arxiv.org/abs/2506.01482"
+    code_url: "https://github.com/RS2002/Skip-BART"
+
   - title: "Magnitude-Modulated Equivariant Adapter for Parameter-Efficient Fine-Tuning of Equivariant Graph Neural Networks"
     category: "AI4Sci"
     venue: "AAAI 2026"
