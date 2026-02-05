@@ -1,8 +1,11 @@
 about:
   paragraphs:
-    - "My research interests include Human-Computer Interaction (2020-) and AI for Science (2025-)."
-    - "I also engage in collaborative research on interesting topics."
-    - "My hobbies are composing music and working out. I am also the lead guitarist of <b>Tokamak Disruption</b>, an alternative metal band."
+    - "I focus on using AI to extend human perception, understanding, and action in complex tasks. "
+    - "In Human-Computer Interaction (2020-), I study how to provide perception/cognition support based on human state and behavior, reducing information omissions and response lag. "
+    - "In AI for Science (2024-), I explore workflow-centric agents that turn models into research collaborators, bridging the gap between scientists and data scientists."
+    - "I also engage in collaborative research on topics I find interesting."
+    - "My hobbies are composing music and working out. I am also the lead guitarist of <b>Tokamak Disruption</b>, a metal band."
+
 
 news:
   - date: "2026.1"
