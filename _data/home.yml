@@ -44,6 +44,10 @@ experience:
     organization: "ChenJiaGou Hope Elementary School"
     role: "Volunteer Teaching"
 
+teaching:
+  - code: "SFT303AF"
+    title: "AI in fashion business"
+
 publications:
   - title: "Automatic Stage Lighting Control: Is it a Rule-Driven Process or Generative Task?"
     category: "HCI"

@@ -435,6 +435,7 @@
       <div class="mobile-links">
         <a href="#news">News</a>
         <a href="#publications">Pubs</a>
+        <a href="#teaching">Teach</a>
         <a href="#experience">Exp</a>
       </div>
     </div>
@@ -452,8 +453,9 @@
             <a href="#education" class="nav-item">02 Education</a>
             <a href="#publications" class="nav-item">03 Publications</a>
             <a href="#experience" class="nav-item">04 Experience</a>
-            <a href="#awards" class="nav-item">05 Honors</a>
-            <a href="#life" class="nav-item">06 Life &amp; Noise</a>
+            <a href="#teaching" class="nav-item">05 Teaching</a>
+            <a href="#awards" class="nav-item">06 Honors</a>
+            <a href="#life" class="nav-item">07 Life &amp; Noise</a>
           </nav>
         </div>
 
@@ -704,9 +706,25 @@
           </div>
         </section>
 
-        <section id="awards">
+        <section id="teaching">
           <div class="section-header">
             <span class="section-num">05</span>
+            <span>Teaching</span>
+          </div>
+
+          <div class="news-list">
+            {% for course in home.teaching %}
+            <div class="news-item">
+              <span class="news-date">{{ course.code }}</span>
+              <span class="news-text"><b>{{ course.title }}</b></span>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section id="awards">
+          <div class="section-header">
+            <span class="section-num">06</span>
             <span>Honors &amp; Awards</span>
           </div>
 
@@ -722,7 +740,7 @@
 
         <section id="life">
           <div class="section-header">
-            <span class="section-num">06</span>
+            <span class="section-num">07</span>
             <span>Life &amp; Noise</span>
           </div>
 
