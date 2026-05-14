@@ -31,6 +31,20 @@
         --border-light: #eeeeee;
         --border-med: #e0e0e0;
         --border-heavy: #050505;
+
+        /* Spectral / motion tokens */
+        --spectral: linear-gradient(
+          90deg,
+          #ff3d8a 0%,
+          #c44cff 14%,
+          #5b6cff 28%,
+          #00b8ff 42%,
+          #00d4aa 56%,
+          #7cff6b 70%,
+          #ffd447 84%,
+          #ff6b3d 100%
+        );
+        --scroll-progress: 0;
         
         /* Typography */
         --mono-font: 'JetBrains Mono', monospace;
@@ -53,6 +67,90 @@
         font-size: 1.125rem; /* 18px */
         line-height: 1.7;
         -webkit-font-smoothing: antialiased;
+        position: relative;
+        isolation: isolate;
+      }
+
+      /* --- Full-screen animated gradient mesh (ambient) --- */
+      .mesh-stack {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .mesh-layer {
+        position: absolute;
+        inset: -35%;
+        opacity: 0.55;
+        filter: blur(72px) saturate(1.15);
+        mix-blend-mode: multiply;
+        will-change: transform;
+      }
+      .mesh-layer--a {
+        background:
+          radial-gradient(closest-side at 22% 28%, rgba(0, 68, 204, 0.35), transparent 72%),
+          radial-gradient(closest-side at 78% 22%, rgba(196, 76, 255, 0.28), transparent 70%),
+          radial-gradient(closest-side at 55% 88%, rgba(0, 212, 170, 0.22), transparent 68%);
+        animation: meshFloatA 22s ease-in-out infinite alternate;
+      }
+      .mesh-layer--b {
+        opacity: 0.42;
+        background:
+          radial-gradient(closest-side at 70% 65%, rgba(255, 61, 138, 0.22), transparent 75%),
+          radial-gradient(closest-side at 12% 72%, rgba(0, 184, 255, 0.2), transparent 72%),
+          radial-gradient(closest-side at 40% 40%, rgba(255, 212, 71, 0.14), transparent 65%);
+        animation: meshFloatB 26s ease-in-out infinite alternate;
+      }
+      .mesh-layer--c {
+        opacity: 0.28;
+        background: conic-gradient(
+          from 120deg at 50% 50%,
+          rgba(0, 68, 204, 0.12),
+          rgba(196, 76, 255, 0.1),
+          rgba(0, 212, 170, 0.1),
+          rgba(255, 61, 138, 0.08),
+          rgba(0, 68, 204, 0.12)
+        );
+        animation: meshSpin 48s linear infinite;
+        mix-blend-mode: soft-light;
+      }
+      @keyframes meshFloatA {
+        0% { transform: translate3d(0, 0, 0) scale(1); }
+        100% { transform: translate3d(6%, -5%, 0) scale(1.08); }
+      }
+      @keyframes meshFloatB {
+        0% { transform: translate3d(0, 0, 0) scale(1.05) rotate(0deg); }
+        100% { transform: translate3d(-7%, 6%, 0) scale(1) rotate(6deg); }
+      }
+      @keyframes meshSpin {
+        to { transform: rotate(360deg) scale(1.12); }
+      }
+
+      /* --- Scroll-linked spectral progress --- */
+      .scroll-spectral {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        z-index: 1100;
+        background: rgba(0, 0, 0, 0.04);
+        pointer-events: none;
+      }
+      .scroll-spectral__fill {
+        height: 100%;
+        width: calc(var(--scroll-progress) * 1%);
+        max-width: 100%;
+        background: var(--spectral);
+        background-size: 240% 100%;
+        transform-origin: 0 50%;
+        box-shadow: 0 0 16px rgba(0, 68, 204, 0.25);
+        animation: spectralStripDrift 10s linear infinite;
+      }
+      @keyframes spectralStripDrift {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
       }
 
       a { color: var(--fg); text-decoration: none; transition: all 0.2s ease; }
@@ -74,6 +172,8 @@
         display: flex;
         max-width: 1440px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
       }
 
       /* --- Sidebar --- */
@@ -85,7 +185,8 @@
         padding: 5rem 2.5rem;
         border-right: 1px solid var(--border-light);
         display: flex; flex-direction: column; justify-content: space-between;
-        background: #fafafa;
+        background: rgba(250, 250, 250, 0.82);
+        backdrop-filter: blur(14px) saturate(1.15);
         flex-shrink: 0;
       }
 
@@ -130,7 +231,11 @@
 
       /* --- Main Content --- */
       .main-content {
-        flex-grow: 1; padding: 5rem var(--content-padding); min-width: 0;
+        flex-grow: 1;
+        padding: 5rem var(--content-padding);
+        min-width: 0;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(12px) saturate(1.05);
       }
 
       section { margin-bottom: 8rem; scroll-margin-top: 100px; }
@@ -155,9 +260,9 @@
         font-weight: 500; margin-top: 4px;
       }
 
-      /* --- 1. About / Intro Styling (Clean Style) --- */
+      /* --- 1. About / Intro --- */
       .intro-container {
-        max-width: 720px; /* Slightly narrower for better focus */
+        max-width: 720px;
         margin-bottom: 6rem;
       }
 
@@ -271,6 +376,26 @@
         border-left: 2px solid transparent;
         margin-left: -2px; /* Overlay the border */
         transition: all 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+      .news-item::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(110deg, transparent 30%, rgba(0, 68, 204, 0.04) 48%, rgba(196, 76, 255, 0.05) 52%, transparent 70%);
+        background-size: 200% 100%;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+      }
+      .news-item:hover::before {
+        opacity: 1;
+        animation: listSpectralDrift 3s ease-in-out infinite;
+      }
+      @keyframes listSpectralDrift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
       }
       .news-item:hover {
         border-left-color: var(--accent);
@@ -279,8 +404,10 @@
       .news-date { 
         font-family: var(--mono-font); font-size: 0.8rem; color: var(--subtext); 
         white-space: nowrap; min-width: 72px;
+        position: relative;
+        z-index: 1;
       }
-      .news-text { font-size: 1rem; line-height: 1.5; }
+      .news-text { font-size: 1rem; line-height: 1.5; position: relative; z-index: 1; }
 
       /* --- Publications --- */
       .pub-category {
@@ -294,12 +421,83 @@
         border-radius: 6px;
         margin-bottom: 1rem;
         background: #fff;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: border-color 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s, transform 0.35s;
         overflow: hidden;
+        position: relative;
+        isolation: isolate;
       }
+      /* Inner flowing spectral layer */
+      .pub-card::before {
+        content: '';
+        position: absolute;
+        inset: -40%;
+        background:
+          conic-gradient(from 0deg at 50% 50%, rgba(0, 68, 204, 0.07), rgba(196, 76, 255, 0.06), rgba(0, 212, 170, 0.06), rgba(255, 61, 138, 0.05), rgba(0, 68, 204, 0.07)),
+          linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+        background-size: 100% 100%, 180% 180%;
+        opacity: 0.35;
+        animation: pubFlow 14s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+        transition: opacity 0.45s ease;
+      }
+      .pub-card:hover::before {
+        opacity: 0.95;
+      }
+      @keyframes pubFlow {
+        0%, 100% { transform: translate3d(-4%, 0, 0) rotate(0deg); background-position: 0% 0%, 0% 50%; }
+        50% { transform: translate3d(5%, -3%, 0) rotate(8deg); background-position: 0% 0%, 100% 40%; }
+      }
+      /* Hover spectral scan (seamless loop: duplicated half + translate by half width) */
+      .pub-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 200%;
+        background: linear-gradient(
+          105deg,
+          transparent 0%,
+          transparent 8%,
+          rgba(255, 61, 138, 0.12) 11%,
+          rgba(0, 184, 255, 0.14) 16%,
+          rgba(124, 255, 107, 0.1) 22%,
+          rgba(0, 184, 255, 0.14) 28%,
+          rgba(255, 61, 138, 0.12) 34%,
+          transparent 42%,
+          transparent 50%,
+          transparent 50%,
+          transparent 58%,
+          rgba(255, 61, 138, 0.12) 61%,
+          rgba(0, 184, 255, 0.14) 66%,
+          rgba(124, 255, 107, 0.1) 72%,
+          rgba(0, 184, 255, 0.14) 78%,
+          rgba(255, 61, 138, 0.12) 84%,
+          transparent 92%,
+          transparent 100%
+        );
+        background-size: 100% 100%;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 0;
+        mix-blend-mode: multiply;
+        transition: opacity 0.35s ease;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+      }
+      .pub-card:hover::after {
+        opacity: 0.6;
+        animation: spectralScanLoop 15s linear infinite;
+      }
+      @keyframes spectralScanLoop {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+      }
+
       .pub-card:hover {
-        border-color: var(--accent);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border-color: rgba(0, 68, 204, 0.45);
+        box-shadow: 0 8px 28px rgba(0, 68, 204, 0.08);
         transform: translateY(-2px);
       }
 
@@ -308,9 +506,12 @@
         background: #f8fbff;
         border-color: var(--accent);
       }
+      .pub-card-highlight::before {
+        opacity: 0.5;
+      }
       .pub-card-highlight:hover {
-        border-color: var(--border-med);
-        box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        border-color: rgba(0, 68, 204, 0.55);
+        box-shadow: 0 10px 32px rgba(0, 68, 204, 0.12);
         transform: translateY(-3px);
       }
 
@@ -319,14 +520,30 @@
         background: #fafafa;
         border-color: var(--border-light);
       }
+      .pub-card-arxiv::before {
+        opacity: 0.2;
+      }
+      .pub-card-arxiv:hover::after {
+        animation-duration: 20s;
+        opacity: 0.2;
+      }
       .pub-card-arxiv:hover {
         border-color: var(--border-med);
         box-shadow: none;
         transform: none;
       }
 
-      .pub-header { padding: 1.2rem 1.5rem; cursor: pointer; position: relative; display: flex; justify-content: space-between; gap: 1rem; }
-      .pub-info { width: 100%; }
+      .pub-header {
+        padding: 1.2rem 1.5rem;
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        z-index: 1;
+      }
+
+      .pub-info { width: 100%; position: relative; z-index: 1; }
       .pub-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.4rem; line-height: 1.3; color: var(--fg); }
       .pub-authors { font-size: 0.95rem; color: #555; margin-bottom: 0.4rem; }
       .pub-venue-tag {
@@ -353,6 +570,7 @@
       .toggle-icon {
         width: 20px; height: 20px; flex-shrink: 0; position: relative; top: 4px;
         display: flex; align-items: center; justify-content: center;
+        z-index: 1;
       }
       .toggle-icon::after {
         content: '+'; font-family: var(--mono-font); font-size: 1.2rem; color: #999; transition: 0.3s;
@@ -360,7 +578,7 @@
       .pub-card.active .toggle-icon::after { content: '-'; color: var(--accent); transform: rotate(180deg); }
       .pub-card.active { border-color: var(--border-med); background: #fafafa; }
 
-      .pub-details { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; border-top: 1px solid transparent; }
+      .pub-details { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; border-top: 1px solid transparent; position: relative; z-index: 1; }
       .pub-card.active .pub-details { border-top-color: var(--border-light); }
       .pub-inner { padding: 1.5rem; font-size: 0.95rem; color: #444; line-height: 1.6; }
 
@@ -381,14 +599,53 @@
         position: relative; overflow: hidden; min-height: 280px;
         display: flex; flex-direction: column; justify-content: space-between;
         box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        isolation: isolate;
+      }
+      .band-card::before {
+        content: '';
+        position: absolute;
+        inset: -30%;
+        z-index: 1;
+        pointer-events: none;
+        background:
+          conic-gradient(from 40deg at 70% 30%, rgba(0, 68, 204, 0.25), transparent 40%, rgba(196, 76, 255, 0.2) 70%, transparent 100%),
+          radial-gradient(ellipse 90% 70% at 20% 90%, rgba(255, 61, 138, 0.18), transparent 55%);
+        opacity: 0.55;
+        animation: bandCardFlow 22s ease-in-out infinite;
+        mix-blend-mode: screen;
+      }
+      @keyframes bandCardFlow {
+        0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+        50% { transform: translate3d(-4%, 3%, 0) rotate(8deg); }
       }
       .noise-overlay {
         position: absolute; top:0; left:0; width:100%; height:100%;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
         pointer-events: none; mix-blend-mode: overlay;
+        z-index: 2;
       }
       .solo-projects {
         padding: 2rem; border: 1px solid var(--border-med); background: #fff; border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .solo-projects::before {
+        content: '';
+        position: absolute;
+        inset: -30%;
+        background:
+          radial-gradient(ellipse 70% 50% at 20% 0%, rgba(0, 68, 204, 0.08), transparent 55%),
+          radial-gradient(ellipse 60% 45% at 100% 100%, rgba(255, 61, 138, 0.06), transparent 50%);
+        opacity: 0.65;
+        animation: soloFlow 16s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .solo-projects > * { position: relative; z-index: 1; }
+      @keyframes soloFlow {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(-6%, 4%, 0); }
       }
 
       /* --- Footer --- */
@@ -396,6 +653,26 @@
         margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--border-light);
         font-family: var(--mono-font); font-size: 0.75rem; color: #aaa;
         display: flex; justify-content: space-between;
+      }
+
+      /* --- Reduced motion --- */
+      @media (prefers-reduced-motion: reduce) {
+        .mesh-layer,
+        .mesh-layer--c,
+        .scroll-spectral__fill,
+        .pub-card::before,
+        .pub-card::after,
+        .pub-card:hover::after,
+        .news-item:hover::before,
+        .solo-projects::before,
+        .band-card::before {
+          animation: none !important;
+        }
+        .pub-card:hover::after,
+        .news-item:hover::before {
+          opacity: 0.35;
+        }
+        html { scroll-behavior: auto; }
       }
 
       /* --- Responsive Design --- */
@@ -430,6 +707,23 @@
   </head>
 
   <body>
+    <div class="mesh-stack" aria-hidden="true">
+      <div class="mesh-layer mesh-layer--a"></div>
+      <div class="mesh-layer mesh-layer--b"></div>
+      <div class="mesh-layer mesh-layer--c"></div>
+    </div>
+    <div
+      class="scroll-spectral"
+      id="scrollSpectral"
+      role="progressbar"
+      aria-label="Page scroll progress"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+    >
+      <div class="scroll-spectral__fill"></div>
+    </div>
+
     <div class="mobile-nav">
       <div class="mobile-brand">{{ site.author.name }}</div>
       <div class="mobile-links">
@@ -487,7 +781,6 @@
       <main class="main-content">
         {% assign home = site.data.home %}
 
-        <!-- Optimized About Section -->
         <div class="intro-container">
           <div class="intro-text">
             {% for p in home.about.paragraphs %}
@@ -766,12 +1059,12 @@
             <!-- Band Card -->
             <div class="band-card">
               <div class="noise-overlay"></div>
-              <div style="position: relative; z-index: 2;">
+              <div style="position: relative; z-index: 3;">
                 <div style="font-family:var(--mono-font); font-size:0.7rem; margin-bottom:1rem; opacity:0.7;">{{ home.life.band.tagline }}</div>
                 <h3 style="font-family:var(--sans-font); font-size:2rem; line-height:1.1; margin-bottom:0.5rem;">{{ home.life.band.name_line1 }}<br>{{ home.life.band.name_line2 }}</h3>
                 <p style="font-size:0.9rem; opacity:0.8; margin-top:0.5rem;">{{ home.life.band.role }}</p>
               </div>
-              <a href="{{ home.life.band.link }}" target="_blank" style="position: relative; z-index: 2; color:#fff; font-family:var(--mono-font); font-size:0.8rem; border-bottom:1px solid #fff; display:inline-block; width:fit-content;">{{ home.life.band.link_label }} ↗</a>
+              <a href="{{ home.life.band.link }}" target="_blank" style="position: relative; z-index: 3; color:#fff; font-family:var(--mono-font); font-size:0.8rem; border-bottom:1px solid #fff; display:inline-block; width:fit-content;">{{ home.life.band.link_label }} ↗</a>
             </div>
 
             <!-- Solo Project Card -->
@@ -823,23 +1116,35 @@
       const sections = document.querySelectorAll('section');
       const navItems = document.querySelectorAll('.nav-item');
 
-      window.addEventListener('scroll', () => {
+      /* Single scroll handler: nav spy + spectral progress */
+      function onScroll() {
         let current = '';
         const scrollPos = window.pageYOffset;
-        
-        sections.forEach(section => {
+
+        sections.forEach((section) => {
           if (scrollPos >= section.offsetTop - 200) {
             current = section.getAttribute('id');
           }
         });
 
-        navItems.forEach(item => {
+        navItems.forEach((item) => {
           item.classList.remove('active');
           if (item.getAttribute('href').includes(current)) {
             item.classList.add('active');
           }
         });
-      });
+
+        const root = document.documentElement;
+        const bar = document.getElementById('scrollSpectral');
+        const max = root.scrollHeight - root.clientHeight;
+        const p = max <= 0 ? 0 : Math.min(100, Math.max(0, (root.scrollTop / max) * 100));
+        root.style.setProperty('--scroll-progress', String(p));
+        if (bar) bar.setAttribute('aria-valuenow', String(Math.round(p)));
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
     </script>
   </body>
 </html>
