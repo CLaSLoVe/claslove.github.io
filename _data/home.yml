@@ -10,6 +10,8 @@ about:
 news:
   - date: "2026.5"
     text: "Our Paper 'Efficient Equivariant High-Order Crystal Tensor Prediction' is accepted by ICML 2026."
+  - date: "2026.4"
+    text: "Side Project with friends 'Zero-Effort Image-to-Music Generation: An Interpretable RAG-based VLM Approach' is accepted by ICMR 2026."
   - date: "2026.1"
     text: "Side Project with friends 'Automatic Stage Lighting Control' is accepted by ICLR 2026."
   - date: "2025.11"
@@ -83,6 +85,15 @@ publications:
     abstract: "End-to-end prediction of high-order crystal tensor properties from atomic structures remains challenging: while spherical-harmonic equivariant models are expressive, their Clebsch-Gordan tensor products incur substantial compute and memory costs for higher-order targets. We propose the Cartesian Environment Interaction Tensor Network (CEITNet), an approach that constructs a multi-channel Cartesian local environment tensor for each atom and performs flexible many-body mixing via a learnable channel-space interaction. By performing learning in channel space and using Cartesian tensor bases to assemble equivariant outputs, CEITNet enables efficient construction of high-order tensor. Across benchmark datasets for order-2 dielectric, order-3 piezoelectric, and order-4 elastic tensor prediction, CEITNet surpasses prior high-order prediction methods on key accuracy criteria while offering high computational efficiency."
     pdf_url: "https://arxiv.org/abs/2602.04323"
     code_url: "https://github.com/CLaSLoVe/ceitnet"
+
+  - title: "Zero-Effort Image-to-Music Generation: An Interpretable RAG-based VLM Approach"
+    category: "HCI"
+    venue: "ICMR 2026"
+    level: "normal"
+    authors: "Zijian Zhao, <b>Dian Jin</b>, Zijing Zhou"
+    abstract: "Recently, Image-to-Music (I2M) generation has garnered significant attention, with potential applications in fields such as gaming, advertising, and multi-modal art creation. However, due to the ambiguous and subjective nature of I2M tasks, most end-to-end methods lack interpretability, leaving users puzzled about the generation results. Even methods based on emotion mapping face controversy, as emotion represents only a singular aspect of art. Additionally, most learning-based methods require substantial computational resources and large datasets for training, hindering accessibility for common users. To address these challenges, we propose the first Vision Language Model (VLM)-based I2M framework that offers high interpretability and low computational cost. Specifically, we utilize ABC notation to bridge the text and music modalities, enabling the VLM to generate music using natural language. We then apply multi-modal Retrieval-Augmented Generation (RAG) and self-refinement techniques to allow the VLM to produce high-quality music without external training. Furthermore, we leverage the generated motivations in text and the attention maps from the VLM to provide explanations for the generated results in both text and image modalities. To validate our method, we conduct both human studies and machine evaluations, where our method outperforms others in terms of music quality and music-image consistency, indicating promising results."
+    pdf_url: ""
+    code_url: "https://github.com/RS2002/Image2Music"
 
   - title: "Rotational Sampling: A Plug-and-Play Encoder for Rotation-Invariant 3D Molecular GNNs"
     category: "AI4Sci"
