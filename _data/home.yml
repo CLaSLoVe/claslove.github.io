@@ -9,6 +9,8 @@ about:
 
 news:
   - date: "2026.1"
+    text: "Our Paper 'CEITNet' (Efficient Equivariant High-Order Crystal Tensor Prediction) is accepted by ICML 2026."
+  - date: "2026.1"
     text: "Side Project with friends 'Automatic Stage Lighting Control' is accepted by ICLR 2026."
   - date: "2025.11"
     text: "Our Paper 'Magnitude-Modulated Equivariant Adapter' is accepted by AAAI 2026."
@@ -66,7 +68,16 @@ publications:
     abstract: "Pretrained equivariant graph neural networks based on spherical harmonics offer efficient and accurate alternatives to computationally expensive ab-initio methods, yet adapting them to new tasks and chemical environments still requires fine-tuning. Conventional parameter-efficient fine-tuning (PEFT) techniques, such as Adapters and LoRA, typically break symmetry, making them incompatible with those equivariant architectures. ELoRA, recently proposed, is the first equivariant PEFT method. It achieves improved parameter efficiency and performance on many benchmarks. However, the relatively high degrees of freedom it retains within each tensor order can still perturb pretrained feature distributions and ultimately degrade performance. To address this, we present Magnitude-Modulated Equivariant Adapter (MMEA), a novel equivariant fine-tuning method which employs lightweight scalar gating to modulate feature magnitudes on a per-order and per-multiplicity basis. We demonstrate that MMEA preserves strict equivariance and, across multiple benchmarks, consistently improves energy and force predictions to state-of-the-art levels while training fewer parameters than competing approaches. These results suggest that, in many practical scenarios, modulating channel magnitudes is sufficient to adapt equivariant models to new chemical environments without breaking symmetry, pointing toward a new paradigm for equivariant PEFT design."
     pdf_url: "https://arxiv.org/pdf/2511.06696"
     code_url: "https://github.com/CLaSLoVe/MMEA"
-  
+
+  - title: "Efficient Equivariant High-Order Crystal Tensor Prediction via Cartesian Local-Environment Many-Body Coupling"
+    category: "AI4Sci"
+    venue: "ICML 2026"
+    level: "normal"
+    authors: "<b>Dian Jin</b>, Yancheng Yuan, Xiaoming Tao"
+    abstract: "End-to-end prediction of high-order crystal tensor properties from atomic structures remains challenging: while spherical-harmonic equivariant models are expressive, their Clebsch-Gordan tensor products incur substantial compute and memory costs for higher-order targets. We propose the Cartesian Environment Interaction Tensor Network (CEITNet), an approach that constructs a multi-channel Cartesian local environment tensor for each atom and performs flexible many-body mixing via a learnable channel-space interaction. By performing learning in channel space and using Cartesian tensor bases to assemble equivariant outputs, CEITNet enables efficient construction of high-order tensor. Across benchmark datasets for order-2 dielectric, order-3 piezoelectric, and order-4 elastic tensor prediction, CEITNet surpasses prior high-order prediction methods on key accuracy criteria while offering high computational efficiency."
+    pdf_url: "https://arxiv.org/abs/2602.04323"
+    code_url: "https://github.com/CLaSLoVe/ceitnet"
+
   - title: "Rotational Sampling: A Plug-and-Play Encoder for Rotation-Invariant 3D Molecular GNNs"
     category: "AI4Sci"
     venue: "Arxiv"
