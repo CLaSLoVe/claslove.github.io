@@ -50,6 +50,12 @@ teaching:
   - code: "SFT303AF"
     title: "AI in fashion business"
 
+services:
+  - code: "AAAI 2026"
+    title: "Reviewer"
+  - code: "ICML 2026"
+    title: "Silver Reviewer Award"
+
 publications:
   - title: "Automatic Stage Lighting Control: Is it a Rule-Driven Process or Generative Task?"
     category: "HCI"
