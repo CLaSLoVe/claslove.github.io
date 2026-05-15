@@ -260,6 +260,10 @@
         font-weight: 500; margin-top: 4px;
       }
 
+      #publications .section-header {
+        margin-bottom: 2rem;
+      }
+
       /* --- 1. About / Intro --- */
       .intro-container {
         max-width: 720px;
@@ -340,6 +344,146 @@
       }
       .timeline-block:hover .timeline-dot { background: var(--accent); }
 
+      /* Education: stronger timeline dot for ongoing rows (set ongoing: true in home.yml) */
+      #education .timeline-block--current .timeline-dot {
+        width: 15px;
+        height: 15px;
+        left: -8px;
+        top: 5px;
+        background: radial-gradient(circle at 32% 32%, #fff 0%, rgba(230, 238, 255, 0.95) 55%, #fff 100%);
+        border-width: 2.5px;
+        border-color: var(--accent);
+        box-shadow:
+          0 0 0 2px rgba(0, 68, 204, 0.18),
+          0 0 16px rgba(0, 68, 204, 0.35);
+        animation: eduCurrentDotPulse 2.35s ease-in-out infinite;
+      }
+      #education .timeline-block--current:hover .timeline-dot {
+        background: var(--accent-light);
+        border-color: var(--accent);
+      }
+      @keyframes eduCurrentDotPulse {
+        0%, 100% {
+          box-shadow:
+            0 0 0 2px rgba(0, 68, 204, 0.2),
+            0 0 14px rgba(0, 68, 204, 0.32);
+        }
+        50% {
+          box-shadow:
+            0 0 0 11px rgba(0, 68, 204, 0),
+            0 0 22px rgba(196, 76, 255, 0.28);
+        }
+      }
+
+      /* News: click fireworks — dense keyframes + linear timing for smooth motion */
+      #news .news-item {
+        cursor: pointer;
+      }
+      .news-fw-burst {
+        pointer-events: none;
+        z-index: 4800;
+      }
+      .news-fw-core {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 12px;
+        height: 12px;
+        margin: -6px 0 0 -6px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 38% 38%, #fff 0%, rgba(255, 230, 200, 0.75) 35%, rgba(255, 120, 80, 0.35) 55%, transparent 72%);
+        box-shadow: 0 0 18px rgba(255, 200, 140, 0.65);
+        animation: newsFwCore 1.1s cubic-bezier(0.25, 0.85, 0.2, 1) 0.06s forwards;
+      }
+      @keyframes newsFwCore {
+        0% {
+          transform: scale3d(0.2, 0.2, 1);
+          opacity: 0;
+        }
+        22% {
+          transform: scale3d(2.05, 2.05, 1);
+          opacity: 1;
+        }
+        48% {
+          transform: scale3d(2.45, 2.45, 1);
+          opacity: 0.72;
+        }
+        100% {
+          transform: scale3d(4.8, 4.8, 1);
+          opacity: 0;
+        }
+      }
+      .news-fw-particle {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 3px;
+        height: 3px;
+        margin: -1.5px 0 0 -1.5px;
+        border-radius: 50%;
+        opacity: 0;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        animation: newsFwShell 1.52s linear forwards;
+        box-shadow:
+          0 0 6px rgba(255, 255, 255, 0.75),
+          0 0 14px currentColor;
+      }
+      .news-fw-particle--trail {
+        animation-duration: 1.82s;
+      }
+      .news-fw-particle--ember {
+        animation-duration: 2.12s;
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.55), 0 0 10px currentColor;
+      }
+      /* Smooth ballistic path: (tx,ty)*t + extra downward fall*t^2; many stops + linear easing */
+      @keyframes newsFwShell {
+        0% {
+          transform: translate3d(0, 0, 0) scale3d(1.06, 1.06, 1);
+          opacity: 0;
+        }
+        2% {
+          opacity: 1;
+        }
+        9% {
+          transform: translate3d(calc(var(--tx) * 0.09), calc(var(--ty) * 0.09 + var(--fall) * 0.0081), 0) scale3d(1, 1, 1);
+          opacity: 1;
+        }
+        18% {
+          transform: translate3d(calc(var(--tx) * 0.18), calc(var(--ty) * 0.18 + var(--fall) * 0.0324), 0) scale3d(0.98, 0.98, 1);
+        }
+        27% {
+          transform: translate3d(calc(var(--tx) * 0.27), calc(var(--ty) * 0.27 + var(--fall) * 0.0729), 0) scale3d(0.95, 0.95, 1);
+        }
+        36% {
+          transform: translate3d(calc(var(--tx) * 0.36), calc(var(--ty) * 0.36 + var(--fall) * 0.1296), 0) scale3d(0.9, 0.9, 1);
+        }
+        45% {
+          transform: translate3d(calc(var(--tx) * 0.45), calc(var(--ty) * 0.45 + var(--fall) * 0.2025), 0) scale3d(0.84, 0.84, 1);
+        }
+        54% {
+          transform: translate3d(calc(var(--tx) * 0.54), calc(var(--ty) * 0.54 + var(--fall) * 0.2916), 0) scale3d(0.74, 0.74, 1);
+        }
+        63% {
+          transform: translate3d(calc(var(--tx) * 0.63), calc(var(--ty) * 0.63 + var(--fall) * 0.3969), 0) scale3d(0.62, 0.62, 1);
+        }
+        72% {
+          transform: translate3d(calc(var(--tx) * 0.72), calc(var(--ty) * 0.72 + var(--fall) * 0.5184), 0) scale3d(0.48, 0.48, 1);
+        }
+        81% {
+          transform: translate3d(calc(var(--tx) * 0.81), calc(var(--ty) * 0.81 + var(--fall) * 0.6561), 0) scale3d(0.34, 0.34, 1);
+          opacity: 0.92;
+        }
+        90% {
+          transform: translate3d(calc(var(--tx) * 0.9), calc(var(--ty) * 0.9 + var(--fall) * 0.81), 0) scale3d(0.2, 0.2, 1);
+          opacity: 0.55;
+        }
+        100% {
+          transform: translate3d(var(--tx), calc(var(--ty) + var(--fall)), 0) scale3d(0.1, 0.1, 1);
+          opacity: 0;
+        }
+      }
+
       .timeline-content {
         padding-left: 2rem;
       }
@@ -412,9 +556,187 @@
       /* --- Publications --- */
       .pub-category {
         font-family: var(--sans-font); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-        margin: 3.5rem 0 1.5rem 0; color: var(--subtext); display: flex; align-items: center; gap: 12px;
+        margin: 2.25rem 0 1.25rem 0; color: var(--subtext); display: flex; align-items: center; gap: 12px;
       }
       .pub-category::before { content:''; display:block; width:12px; height:2px; background:var(--accent); }
+
+      /* Publication category filter */
+      .pub-filter-wrap {
+        margin: -1rem 0 0.65rem 0;
+        position: relative;
+      }
+      .pub-filter-track {
+        --glider-x: 4px;
+        --glider-w: 52px;
+        position: relative;
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: 1px;
+        padding: 4px;
+        border-radius: 999px;
+        border: 1px solid var(--border-med);
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(14px) saturate(1.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.045);
+        isolation: isolate;
+      }
+      .pub-filter-track::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: var(--spectral);
+        background-size: 240% 100%;
+        opacity: 0.22;
+        z-index: 0;
+        pointer-events: none;
+        animation: pubFilterBorderDrift 14s linear infinite;
+        filter: blur(0.5px);
+      }
+      .pub-filter-track::after {
+        content: '';
+        position: absolute;
+        inset: 1px;
+        border-radius: inherit;
+        background: rgba(255, 255, 255, 0.94);
+        z-index: 0;
+        pointer-events: none;
+      }
+      @keyframes pubFilterBorderDrift {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+      }
+      .pub-filter-glider {
+        position: absolute;
+        z-index: 1;
+        top: 4px;
+        bottom: 4px;
+        left: var(--glider-x);
+        width: var(--glider-w);
+        border-radius: 999px;
+        background: linear-gradient(130deg, rgba(0, 68, 204, 0.16), rgba(196, 76, 255, 0.1), rgba(0, 212, 170, 0.08));
+        box-shadow:
+          0 0 0 1px rgba(0, 68, 204, 0.12),
+          0 12px 28px rgba(0, 68, 204, 0.12);
+        pointer-events: none;
+        transition:
+          left 0.52s cubic-bezier(0.33, 1.18, 0.32, 1),
+          width 0.48s cubic-bezier(0.33, 1.18, 0.32, 1),
+          box-shadow 0.4s ease;
+      }
+      .pub-filter-glider::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.55) 50%, transparent 80%);
+        background-size: 200% 100%;
+        opacity: 0.65;
+        animation: pubFilterGliderShine 3.2s ease-in-out infinite;
+      }
+      @keyframes pubFilterGliderShine {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+      .pub-filter-btn {
+        position: relative;
+        z-index: 2;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        font-family: var(--mono-font);
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--subtext);
+        padding: 0.42rem 0.72rem;
+        border-radius: 999px;
+        transition: color 0.28s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), text-shadow 0.35s ease;
+        white-space: nowrap;
+      }
+      .pub-filter-btn:hover {
+        color: var(--fg);
+        transform: translateY(-1px);
+      }
+      .pub-filter-btn:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .pub-filter-btn.is-active {
+        color: var(--fg);
+        font-weight: 600;
+        text-shadow: 0 0 24px rgba(0, 68, 204, 0.18);
+      }
+
+      .pub-groups {
+        position: relative;
+      }
+      /* Tighter gap below filter: first category heading needs less top margin */
+      #publications .pub-group:first-child .pub-category {
+        margin-top: 1rem;
+      }
+      #pub-groups[data-pub-filter="AI4Sci"] .pub-group[data-pub-cat="AI4Sci"] .pub-category,
+      #pub-groups[data-pub-filter="MIR"] .pub-group[data-pub-cat="MIR"] .pub-category,
+      #pub-groups[data-pub-filter="HCI"] .pub-group[data-pub-cat="HCI"] .pub-category,
+      #pub-groups[data-pub-filter="MISC"] .pub-group[data-pub-cat="MISC"] .pub-category {
+        margin-top: 1rem;
+      }
+      .pub-groups--boot .pub-group:not(.pub-group--hide) .pub-card {
+        animation: none !important;
+      }
+      .pub-group {
+        display: grid;
+        grid-template-rows: 1fr;
+        transition: grid-template-rows 0.58s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .pub-group.pub-group--hide {
+        grid-template-rows: 0fr;
+        pointer-events: none;
+      }
+      .pub-group-inner {
+        overflow: hidden;
+        min-height: 0;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+        transition:
+          opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.42s ease;
+      }
+      .pub-group.pub-group--hide .pub-group-inner {
+        opacity: 0;
+        transform: translateY(-12px) scale(0.985);
+        filter: blur(5px);
+      }
+      .pub-group:not(.pub-group--hide) .pub-card {
+        animation: pubCardFilterIn 0.52s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+      }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(2) { animation-delay: 0.02s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(3) { animation-delay: 0.06s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(4) { animation-delay: 0.1s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(5) { animation-delay: 0.14s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(6) { animation-delay: 0.18s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(7) { animation-delay: 0.22s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(8) { animation-delay: 0.26s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(9) { animation-delay: 0.3s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(10) { animation-delay: 0.34s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(11) { animation-delay: 0.38s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(12) { animation-delay: 0.42s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(13) { animation-delay: 0.46s; }
+      .pub-group:not(.pub-group--hide) .pub-group-inner > .pub-card:nth-child(14) { animation-delay: 0.5s; }
+      @keyframes pubCardFilterIn {
+        from {
+          opacity: 0;
+          transform: translateY(16px) scale(0.99);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
 
       .pub-card {
         border: 1px solid var(--border-light);
@@ -665,12 +987,38 @@
         .pub-card:hover::after,
         .news-item:hover::before,
         .solo-projects::before,
-        .band-card::before {
+        .band-card::before,
+        .pub-filter-track::before,
+        .pub-filter-glider::after {
           animation: none !important;
         }
         .pub-card:hover::after,
         .news-item:hover::before {
           opacity: 0.35;
+        }
+        .pub-filter-glider,
+        .pub-group,
+        .pub-group-inner,
+        .pub-filter-btn {
+          transition: none !important;
+        }
+        .pub-groups .pub-card {
+          animation: none !important;
+        }
+        .pub-group.pub-group--hide .pub-group-inner {
+          filter: none;
+          transform: none;
+        }
+        #education .timeline-block--current .timeline-dot {
+          animation: none !important;
+          box-shadow: 0 0 0 2px rgba(0, 68, 204, 0.2), 0 0 12px rgba(0, 68, 204, 0.28);
+        }
+        #news .news-item {
+          cursor: default;
+        }
+        .news-fw-core,
+        .news-fw-particle {
+          animation: none !important;
         }
         html { scroll-behavior: auto; }
       }
@@ -698,7 +1046,27 @@
           margin-bottom: 0.2rem; display: block; padding-right: 0;
         }
         .timeline-dot { left: 4px; top: 5px; }
+        #education .timeline-block--current .timeline-dot {
+          left: 2px;
+          top: 4px;
+          width: 14px;
+          height: 14px;
+        }
         .timeline-content { padding-left: 0.5rem; }
+
+        .pub-filter-wrap {
+          margin-left: -0.25rem;
+          margin-right: -0.25rem;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          padding-bottom: 2px;
+          scrollbar-width: thin;
+        }
+        .pub-filter-track {
+          flex-wrap: nowrap;
+          width: max-content;
+          max-width: none;
+        }
 
         /* Slightly reduce lead size on smaller screens */
         .intro-lead { font-size: 1.3rem; }
@@ -817,7 +1185,7 @@
 
           <div class="timeline-container">
             {% for edu in home.education %}
-            <div class="timeline-block">
+            <div class="timeline-block{% if edu.ongoing %} timeline-block--current{% endif %}">
               <div class="timeline-dot"></div>
               <div class="timeline-date">{{ edu.period }}</div>
               <div class="timeline-content">
@@ -840,16 +1208,57 @@
 
           {% assign pub_groups = home.publications | group_by: "category" %}
           <!-- Customize your category order here -->
-          {% assign cat_order = "AI4Sci|HCI|MISC" | split:"|" %}
+          {% assign cat_order = "AI4Sci|MIR|HCI|MISC" | split:"|" %}
+
+          <div class="pub-filter-wrap" id="pub-filter-wrap">
+            <div class="pub-filter-track" role="tablist" aria-label="Filter publications">
+              <span class="pub-filter-glider" aria-hidden="true"></span>
+              <button type="button" class="pub-filter-btn is-active" role="tab" aria-selected="true" data-pub-filter="all">All</button>
+              {% for cat in cat_order %}
+                {% assign cat_btn = false %}
+                {% for g in pub_groups %}
+                  {% if g.name == cat %}
+                    {% assign cat_btn = true %}
+                  {% endif %}
+                {% endfor %}
+                {% if cat_btn %}
+                <button type="button" class="pub-filter-btn" role="tab" aria-selected="false" data-pub-filter="{{ cat }}"
+                  {% if cat == "AI4Sci" %}title="AI for Science"
+                  {% elsif cat == "HCI" %}title="Human–Computer Interaction"
+                  {% elsif cat == "MIR" %}title="Music Information Retrieval"
+                  {% elsif cat == "MISC" %}title="Curious &amp; Fun Research"
+                  {% endif %}>
+                  {% if cat == "AI4Sci" %}
+                    AI4Sci
+                  {% elsif cat == "HCI" %}
+                    HCI
+                  {% elsif cat == "MIR" %}
+                    MIR
+                  {% elsif cat == "MISC" %}
+                    🤔
+                  {% else %}
+                    {{ cat }}
+                  {% endif %}
+                </button>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="pub-groups pub-groups--boot" id="pub-groups" data-pub-filter="all" role="region" aria-label="Publications">
 
           {% for cat in cat_order %}
             {% for g in pub_groups %}
               {% if g.name == cat %}
+                <div class="pub-group" data-pub-cat="{{ cat }}">
+                <div class="pub-group-inner">
                 <div class="pub-category">
                   {% if cat == "AI4Sci" %}
                     AI for Science
                   {% elsif cat == "HCI" %}
                     Human–Computer Interaction
+                  {% elsif cat == "MIR" %}
+                    Music Information Retrieval
                   {% elsif cat == "MISC" %}
                     Curious &amp; Fun Research
                   {% else %}
@@ -973,9 +1382,13 @@
                 </div>
                 {% endif %}
                 {% endfor %}
+                </div>
+                </div>
               {% endif %}
             {% endfor %}
           {% endfor %}
+
+          </div>
         </section>
 
         <section id="experience">
@@ -1111,6 +1524,156 @@
           details.style.maxHeight = details.scrollHeight + "px";
         }
       }
+
+      (function initPubFilter() {
+        const wrap = document.getElementById('pub-filter-wrap');
+        const track = wrap && wrap.querySelector('.pub-filter-track');
+        const glider = wrap && wrap.querySelector('.pub-filter-glider');
+        const groupsRoot = document.getElementById('pub-groups');
+        if (!wrap || !track || !glider || !groupsRoot) return;
+
+        function syncGlider(btn) {
+          if (!btn) return;
+          track.style.setProperty('--glider-x', btn.offsetLeft + 'px');
+          track.style.setProperty('--glider-w', btn.offsetWidth + 'px');
+        }
+
+        function closeExpandedPubs() {
+          groupsRoot.querySelectorAll('.pub-card.active').forEach(function (card) {
+            card.classList.remove('active');
+            var d = card.querySelector('.pub-details');
+            if (d) d.style.maxHeight = null;
+          });
+        }
+
+        function setFilter(filter, btnEl) {
+          wrap.querySelectorAll('.pub-filter-btn').forEach(function (b) {
+            var on = b === btnEl;
+            b.classList.toggle('is-active', on);
+            b.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
+          groupsRoot.dataset.pubFilter = filter;
+          groupsRoot.querySelectorAll('.pub-group').forEach(function (g) {
+            var cat = g.getAttribute('data-pub-cat');
+            var show = filter === 'all' || cat === filter;
+            g.classList.toggle('pub-group--hide', !show);
+          });
+          closeExpandedPubs();
+          syncGlider(btnEl);
+        }
+
+        wrap.querySelectorAll('.pub-filter-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            setFilter(btn.getAttribute('data-pub-filter'), btn);
+          });
+        });
+
+        if (typeof ResizeObserver !== 'undefined') {
+          new ResizeObserver(function () {
+            var active = wrap.querySelector('.pub-filter-btn.is-active');
+            if (active) syncGlider(active);
+          }).observe(track);
+        }
+        window.addEventListener('resize', function () {
+          var active = wrap.querySelector('.pub-filter-btn.is-active');
+          if (active) syncGlider(active);
+        });
+
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            groupsRoot.classList.remove('pub-groups--boot');
+            var active = wrap.querySelector('.pub-filter-btn.is-active');
+            if (active) syncGlider(active);
+          });
+        });
+      })();
+
+      (function initNewsBursts() {
+        var sec = document.getElementById('news');
+        if (!sec) return;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+        var lastBurst = 0;
+
+        function burst(clientX, clientY) {
+          if (reduce.matches) return;
+          var now = Date.now();
+          if (now - lastBurst < 220) return;
+          lastBurst = now;
+          var colors = [
+            '#0044CC',
+            '#5b6cff',
+            '#00b8ff',
+            '#00d4aa',
+            '#c44cff',
+            '#ff3d8a',
+            '#ffd447',
+            '#ffb347',
+            '#ff6b3d'
+          ];
+          var root = document.createElement('div');
+          root.className = 'news-fw-burst';
+          root.setAttribute('aria-hidden', 'true');
+          root.style.cssText =
+            'position:fixed;left:' +
+            clientX +
+            'px;top:' +
+            clientY +
+            'px;width:0;height:0;pointer-events:none;z-index:4800;';
+
+          var core = document.createElement('span');
+          core.className = 'news-fw-core';
+          root.appendChild(core);
+
+          function addShellParticle(baseAng, i, distMin, distMax, trail, ember, delayBase) {
+            var ang = baseAng + (Math.random() - 0.5) * 0.32;
+            var dist = distMin + Math.random() * (distMax - distMin);
+            var tx = Math.cos(ang) * dist;
+            var ty = Math.sin(ang) * dist * 0.7 - 10 - Math.random() * 16;
+            var fall = (ember ? 52 : 40) + Math.random() * (ember ? 55 : 50);
+            var sz = ember ? 1.3 + Math.random() * 1.4 : 2.2 + Math.random() * 2.5;
+            var col = colors[Math.floor(Math.random() * colors.length)];
+            var p = document.createElement('span');
+            p.className = 'news-fw-particle';
+            if (trail) p.className += ' news-fw-particle--trail';
+            if (ember) p.className += ' news-fw-particle--ember';
+            p.style.setProperty('--tx', tx + 'px');
+            p.style.setProperty('--ty', ty + 'px');
+            p.style.setProperty('--fall', fall + 'px');
+            p.style.color = col;
+            p.style.background = col;
+            p.style.width = sz + 'px';
+            p.style.height = sz + 'px';
+            p.style.margin = -sz / 2 + 'px 0 0 ' + -sz / 2 + 'px';
+            p.style.animationDelay = delayBase + Math.random() * 0.055 + i * 0.0025 + 's';
+            root.appendChild(p);
+          }
+
+          var nMain = 26;
+          var i;
+          for (i = 0; i < nMain; i++) {
+            addShellParticle((Math.PI * 2 * i) / nMain, i, 32, 82, false, false, 0.1);
+          }
+          var nTrail = 16;
+          for (i = 0; i < nTrail; i++) {
+            addShellParticle((Math.PI * 2 * i) / nTrail + 0.18, i, 58, 118, true, false, 0.1);
+          }
+          var nEmber = 12;
+          for (i = 0; i < nEmber; i++) {
+            addShellParticle((Math.PI * 2 * i) / nEmber + 0.52, i, 20, 58, false, true, 0.13);
+          }
+
+          document.body.appendChild(root);
+          window.setTimeout(function () {
+            if (root.parentNode) root.parentNode.removeChild(root);
+          }, 2450);
+        }
+
+        sec.addEventListener('click', function (e) {
+          var item = e.target.closest('.news-item');
+          if (!item || !sec.contains(item)) return;
+          burst(e.clientX, e.clientY);
+        });
+      })();
 
       // Scroll Spy
       const sections = document.querySelectorAll('section');

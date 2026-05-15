@@ -3,11 +3,6 @@
 
 This repository is based on a fork of [RayeRen/acad-homepage.github.io](https://github.com/RayeRen/acad-homepage.github.io) and hosts the source code of my personal academic homepage, built with Jekyll and deployed via GitHub Pages at `https://claslove.github.io`.
 
-The site focuses on:
-- **Research** in Human–Computer Interaction and AI for Science.
-- **Publications** organized by category with per-paper importance levels.
-- **News, experience, and awards** in a clean, modern single-page layout (`_layouts/landing.html`).
-
 ## Local Development
 
 Prerequisites:

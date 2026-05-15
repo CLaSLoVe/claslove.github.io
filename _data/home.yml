@@ -11,7 +11,9 @@ news:
   - date: "2026.5"
     text: "Our Paper 'Efficient Equivariant High-Order Crystal Tensor Prediction' is accepted by ICML 2026."
   - date: "2026.4"
-    text: "Side Project with friends 'Zero-Effort Image-to-Music Generation: An Interpretable RAG-based VLM Approach' is accepted by ICMR 2026."
+    text: "Side Project with friends 'Zero-Effort Image-to-Music Generation' is accepted by ICMR 2026."
+  # - date: "2026.4"
+  #   text: "Research internship work 'Accelerating discovery of infrared nonlinear optical materials' is published in npj Computational Materials."
   - date: "2026.1"
     text: "Side Project with friends 'Automatic Stage Lighting Control' is accepted by ICLR 2026."
   - date: "2025.11"
@@ -24,7 +26,9 @@ news:
     text: "Joined the Intelligent Wearable Systems Lab at The Hong Kong Polytechnic University as a Research Assistant."
 
 education:
+  # ongoing: true — larger pulsing dot on this row (period text unchanged).
   - period: "2025.1 - Present"
+    ongoing: true
     institution: "The Hong Kong Polytechnic University"
     role: "PhD Student, Research Institute for Intelligent Wearable Systems"
   - period: "2020.8 - 2023.5"
@@ -60,7 +64,7 @@ services:
 
 publications:
   - title: "Automatic Stage Lighting Control: Is it a Rule-Driven Process or Generative Task?"
-    category: "HCI"
+    category: "MIR"
     venue: "ICLR 2026"
     level: "normal"
     authors: "Zijian Zhao, <b>Dian Jin</b>, Zijing Zhou, Xiaoyu Zhang"
@@ -86,8 +90,17 @@ publications:
     pdf_url: "https://arxiv.org/abs/2602.04323"
     code_url: "https://github.com/CLaSLoVe/ceitnet"
 
+  - title: "Accelerating discovery of infrared nonlinear optical materials with large shift current via high-throughput screening"
+    category: "AI4Sci"
+    venue: "npj Computational Materials"
+    level: "normal"
+    authors: "Aiqin Yang, <b>Dian Jin</b>, Mingkang Liu, Daye Zheng, Qi Wang, Qiangqiang Gu, Jian-Hua Jiang"
+    abstract: "Discovering nonlinear optical (NLO) materials with strong shift current response, particularly in the infrared (IR) regime, is essential for next-generation optoelectronics yet remains highly challenging in both experiments and theory, which still largely relies on case-by-case studies. Here, we employ a high-throughput screening strategy, applying a multi-step filter to the Materials Project database (>154,000 materials), which yielded 2,519 candidate materials for detailed first-principles evaluation. From these calculations, we identify 32 NLO materials with strong shift current response (σ > 100 μA/V²). Our work reveals that layered structures with C3v symmetry and heavy p-block elements (e.g. Te, Sb) exhibit apparent superiority in enhancing shift current. More importantly, 9 of these compounds show shift current response peaks in the IR region, with the strongest reaching 616 μA/V², holding significant application potential in fields such as IR photodetection, sensing, and energy harvesting. Beyond identifying promising candidates, this work establishes a comprehensive and high-quality first-principles dataset for NLO response, providing a solid foundation for future AI-driven screening and accelerated discovery of high-performance NLO materials, as demonstrated by a prototype machine-learning application."
+    pdf_url: "https://doi.org/10.1038/s41524-026-02064-3"
+    code_url: ""
+
   - title: "Zero-Effort Image-to-Music Generation: An Interpretable RAG-based VLM Approach"
-    category: "HCI"
+    category: "MIR"
     venue: "ICMR 2026"
     level: "normal"
     authors: "Zijian Zhao, <b>Dian Jin</b>, Zijing Zhou"
