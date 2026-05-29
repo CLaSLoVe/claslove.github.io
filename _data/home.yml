@@ -119,7 +119,7 @@ publications:
 
   - title: "Fitting an Elephant with Four non-Zero Parameters"
     category: "MISC"
-    venue: "Proceedings of SIGBOVIK 2026"
+    venue: "SIGBOVIK 2026"
     level: "normal"
     authors: "<b>Dian Jin</b>, Junze Yuan"
     abstract: "In 1953, Enrico Fermi criticized Dyson's model by quoting Johnny von Neumann: \"With four parameters I can fit an elephant, and with five I can make him wiggle his trunk.\" So far, there have been several attempts to fit an elephant using four parameters, but as the problem has not been well-defined, the current methods do not completely satisfy the requirements. This paper defines the problem and presents an attempt."
