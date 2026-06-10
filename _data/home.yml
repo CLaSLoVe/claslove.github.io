@@ -135,6 +135,15 @@ publications:
     pdf_url: "https://arxiv.org/pdf/2409.14745"
     code_url: ""
 
+  - title: "A Novel Method with Encoder-Decoder for Cross-Sensor Adaptation in Surface Shape Sensing with Sparse Strain Sensors"
+    category: "HCI"
+    venue: "IEEE RA-L"
+    level: "normal"
+    authors: "Shuo Wang, Heng Luo, <b>Dian Jin</b>, Xiaoming Tao"
+    abstract: "Performance variations in sensor arrays, caused by intrinsic differences or installation conditions, can lead to inconsistent results during shape sensing. To obtain accurate results, a large amount of data is usually required, and a separate model must be retrained for each sensor array, thereby increasing the cost and time of data acquisition, transmission, and computation. To address this issue, this work proposes an encoder-decoder architecture for surface shape sensing based on sparse strain sensors and further incorporates meta-learning and few-shot adaptation strategies to enable adaptation across different groups of sensor arrays. Experimental results demonstrate that, after the cross-sensor adaptation, a newly deployed sensor array achieves a sensing error of approximately 4.0 mm relying on less than 5.0% newly labeled data and requiring an adaptation time of under 1 s, which represents a substantial improvement from 23.0 mm error without adaptation and 20-minute data collection time required to train a new model. Moreover, the number of points with errors below 5.0 mm increased by more than 65.0%. These results indicate that the proposed method can substantially reduce the cost and training burden of surface shape sensing, and it has broad potential applications in soft robotics and wearable devices."
+    pdf_url: "https://doi.org/10.1109/lra.2026.3699130"
+    code_url: ""
+
   - title: "Towards pilot's situation awareness enhancement: A framework of adaptive interaction system and its realization"
     category: "HCI"
     venue: "ISA Trans"
