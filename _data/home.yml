@@ -8,6 +8,8 @@ about:
 
 
 news:
+  - date: "2026.6"
+    text: "Lab collaboration 'Cross-Sensor Adaptation for Surface Shape Sensing' is published in IEEE RA-L."
   - date: "2026.5"
     text: "Our Paper 'Efficient Equivariant High-Order Crystal Tensor Prediction' is accepted by ICML 2026."
   - date: "2026.4"
