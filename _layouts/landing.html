@@ -78,6 +78,8 @@
         z-index: 0;
         pointer-events: none;
         overflow: hidden;
+        contain: paint;
+        transform: translateZ(0);
       }
       .mesh-layer {
         position: absolute;
@@ -86,6 +88,7 @@
         filter: blur(72px) saturate(1.15);
         mix-blend-mode: multiply;
         will-change: transform;
+        backface-visibility: hidden;
       }
       .mesh-layer--a {
         background:
@@ -160,7 +163,7 @@
       .mobile-nav {
         display: none;
         position: fixed; top: 0; left: 0; width: 100%; height: 60px;
-        background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.97);
         border-bottom: 1px solid var(--border-med); z-index: 1000;
         align-items: center; justify-content: space-between; padding: 0 1.5rem;
       }
@@ -185,8 +188,8 @@
         padding: 5rem 2.5rem;
         border-right: 1px solid var(--border-light);
         display: flex; flex-direction: column; justify-content: space-between;
-        background: rgba(250, 250, 250, 0.82);
-        backdrop-filter: blur(14px) saturate(1.15);
+        /* Opaque enough to skip backdrop-filter (major scroll cost over animated mesh) */
+        background: rgba(250, 250, 250, 0.96);
         flex-shrink: 0;
       }
 
@@ -206,7 +209,10 @@
         letter-spacing: 0.02em;
       }
       .nav-item { 
-        opacity: 0.5; transition: all 0.3s; width: fit-content; position: relative;
+        opacity: 0.5;
+        transition: opacity 0.35s ease, color 0.35s ease, transform 0.35s ease;
+        width: fit-content;
+        position: relative;
       }
       .nav-item:hover, .nav-item.active { opacity: 1; color: var(--accent); transform: translateX(5px); }
       .nav-item.active::before {
@@ -226,6 +232,7 @@
         border-bottom: 1px solid transparent;
         width: fit-content;
         font-weight: 500;
+        transition: color 0.3s ease, border-color 0.3s ease;
       }
       .contact-link:hover { color: var(--accent); border-color: var(--accent); }
 
@@ -234,11 +241,22 @@
         flex-grow: 1;
         padding: 5rem var(--content-padding);
         min-width: 0;
-        background: rgba(255, 255, 255, 0.88);
-        backdrop-filter: blur(12px) saturate(1.05);
+        background: rgba(255, 255, 255, 0.94);
       }
 
       section { margin-bottom: 8rem; scroll-margin-top: 100px; }
+
+      /* Pause heavy ambient motion while scrolling — keeps idle look, frees compositor */
+      body.is-scrolling .mesh-layer,
+      body.is-scrolling .scroll-spectral__fill,
+      body.is-scrolling .pub-gas-molecule,
+      body.is-scrolling .band-card::before,
+      body.is-scrolling .solo-projects::before,
+      body.is-scrolling .pub-filter-track::before,
+      body.is-scrolling .pub-filter-glider::after,
+      body.is-scrolling #education .timeline-block--current .timeline-dot {
+        animation-play-state: paused !important;
+      }
 
       /* Section Headers */
       .section-header {
@@ -519,7 +537,10 @@
         align-items: baseline; 
         border-left: 2px solid transparent;
         margin-left: -2px; /* Overlay the border */
-        transition: all 0.2s;
+        transition:
+          border-color 0.35s ease,
+          background-color 0.35s ease,
+          background 0.35s ease;
         position: relative;
         overflow: hidden;
       }
@@ -576,8 +597,7 @@
         padding: 4px;
         border-radius: 999px;
         border: 1px solid var(--border-med);
-        background: rgba(255, 255, 255, 0.82);
-        backdrop-filter: blur(14px) saturate(1.1);
+        background: rgba(255, 255, 255, 0.96);
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.045);
         isolation: isolate;
       }
@@ -700,16 +720,13 @@
         min-height: 0;
         opacity: 1;
         transform: translateY(0) scale(1);
-        filter: blur(0);
         transition:
           opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-          transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
-          filter 0.42s ease;
+          transform 0.48s cubic-bezier(0.22, 1, 0.36, 1);
       }
       .pub-group.pub-group--hide .pub-group-inner {
         opacity: 0;
         transform: translateY(-12px) scale(0.985);
-        filter: blur(5px);
       }
       .pub-group:not(.pub-group--hide) .pub-card {
         animation: pubCardFilterIn 0.52s cubic-bezier(0.22, 1, 0.36, 1) backwards;
@@ -742,115 +759,43 @@
         border: 1px solid var(--border-light);
         border-radius: 6px;
         margin-bottom: 1rem;
-        background: #fff;
-        transition: border-color 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s, transform 0.35s;
+        background-color: #fff;
+        transition:
+          border-color 0.4s ease,
+          background-color 0.4s ease,
+          box-shadow 0.4s ease,
+          transform 0.35s ease;
         overflow: hidden;
         position: relative;
         isolation: isolate;
       }
-      /* Inner flowing spectral layer */
-      .pub-card::before {
-        content: '';
-        position: absolute;
-        inset: -40%;
-        background:
-          conic-gradient(from 0deg at 50% 50%, rgba(0, 68, 204, 0.07), rgba(196, 76, 255, 0.06), rgba(0, 212, 170, 0.06), rgba(255, 61, 138, 0.05), rgba(0, 68, 204, 0.07)),
-          linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
-        background-size: 100% 100%, 180% 180%;
-        opacity: 0.35;
-        animation: pubFlow 14s ease-in-out infinite;
-        pointer-events: none;
-        z-index: 0;
-        transition: opacity 0.45s ease;
-      }
-      .pub-card:hover::before {
-        opacity: 0.95;
-      }
-      @keyframes pubFlow {
-        0%, 100% { transform: translate3d(-4%, 0, 0) rotate(0deg); background-position: 0% 0%, 0% 50%; }
-        50% { transform: translate3d(5%, -3%, 0) rotate(8deg); background-position: 0% 0%, 100% 40%; }
-      }
-      /* Hover spectral scan (seamless loop: duplicated half + translate by half width) */
-      .pub-card::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 200%;
-        background: linear-gradient(
-          105deg,
-          transparent 0%,
-          transparent 8%,
-          rgba(255, 61, 138, 0.12) 11%,
-          rgba(0, 184, 255, 0.14) 16%,
-          rgba(124, 255, 107, 0.1) 22%,
-          rgba(0, 184, 255, 0.14) 28%,
-          rgba(255, 61, 138, 0.12) 34%,
-          transparent 42%,
-          transparent 50%,
-          transparent 50%,
-          transparent 58%,
-          rgba(255, 61, 138, 0.12) 61%,
-          rgba(0, 184, 255, 0.14) 66%,
-          rgba(124, 255, 107, 0.1) 72%,
-          rgba(0, 184, 255, 0.14) 78%,
-          rgba(255, 61, 138, 0.12) 84%,
-          transparent 92%,
-          transparent 100%
-        );
-        background-size: 100% 100%;
-        opacity: 0;
-        pointer-events: none;
-        z-index: 0;
-        mix-blend-mode: multiply;
-        transition: opacity 0.35s ease;
-        will-change: transform;
-        transform: translate3d(0, 0, 0);
-      }
-      .pub-card:hover::after {
-        opacity: 0.6;
-        animation: spectralScanLoop 15s linear infinite;
-      }
-      @keyframes spectralScanLoop {
-        0% { transform: translate3d(0, 0, 0); }
-        100% { transform: translate3d(-50%, 0, 0); }
-      }
 
       .pub-card:hover {
-        border-color: rgba(0, 68, 204, 0.45);
-        box-shadow: 0 8px 28px rgba(0, 68, 204, 0.08);
-        transform: translateY(-2px);
+        border-color: rgba(0, 68, 204, 0.35);
+        background-color: #fafcff;
+        box-shadow: 0 4px 16px rgba(0, 68, 204, 0.06);
+        transform: translateY(-1px);
       }
 
       /* High-visibility flagship entries */
       .pub-card-highlight {
-        background: #f8fbff;
+        background-color: #fff;
         border-color: var(--accent);
       }
-      .pub-card-highlight::before {
-        opacity: 0.5;
-      }
       .pub-card-highlight:hover {
-        border-color: rgba(0, 68, 204, 0.55);
-        box-shadow: 0 10px 32px rgba(0, 68, 204, 0.12);
-        transform: translateY(-3px);
+        border-color: var(--accent);
+        background-color: #f7faff;
+        box-shadow: 0 4px 18px rgba(0, 68, 204, 0.1);
       }
 
       /* Less prominent styling for Arxiv-only entries */
       .pub-card-arxiv {
-        background: #fafafa;
+        background-color: #fff;
         border-color: var(--border-light);
-      }
-      .pub-card-arxiv::before {
-        opacity: 0.2;
-      }
-      .pub-card-arxiv:hover::after {
-        animation-duration: 20s;
-        opacity: 0.2;
       }
       .pub-card-arxiv:hover {
         border-color: var(--border-med);
+        background-color: #fcfcfc;
         box-shadow: none;
         transform: none;
       }
@@ -890,12 +835,15 @@
         white-space: nowrap;
         opacity: 0.28;
         line-height: 1;
-        will-change: transform;
         animation-name: authorGasDrift;
         animation-duration: 16s;
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
         animation-direction: alternate;
+        animation-play-state: paused;
+      }
+      .pub-card.is-inview .pub-gas-molecule {
+        animation-play-state: running;
       }
       @keyframes authorGasDrift {
         0%   { transform: translate3d(0, 0, 0); }
@@ -930,12 +878,23 @@
         z-index: 1;
       }
       .toggle-icon::after {
-        content: '+'; font-family: var(--mono-font); font-size: 1.2rem; color: #999; transition: 0.3s;
+        content: '+'; font-family: var(--mono-font); font-size: 1.2rem; color: #999;
+        transition: color 0.35s ease, transform 0.35s ease;
       }
       .pub-card.active .toggle-icon::after { content: '-'; color: var(--accent); transform: rotate(180deg); }
-      .pub-card.active { border-color: var(--border-med); background: #fafafa; }
+      .pub-card.active {
+        border-color: rgba(0, 68, 204, 0.28);
+        background-color: #f7f9fc;
+      }
 
-      .pub-details { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; border-top: 1px solid transparent; position: relative; z-index: 1; }
+      .pub-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, border-color 0.35s ease;
+        border-top: 1px solid transparent;
+        position: relative;
+        z-index: 1;
+      }
       .pub-card.active .pub-details { border-top-color: var(--border-light); }
       .pub-inner { padding: 1.5rem; font-size: 0.95rem; color: #444; line-height: 1.6; }
 
@@ -943,9 +902,10 @@
       .text-btn {
         font-family: var(--mono-font); font-size: 0.7rem; 
         border: 1px solid var(--border-med); padding: 4px 10px; border-radius: 4px;
-        color: #333; background: #fff;
+        color: #333; background-color: #fff;
+        transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
       }
-      .text-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+      .text-btn:hover { color: var(--accent); border-color: var(--accent); background-color: var(--accent-light); }
 
       /* --- Awards --- */
       /* Re-use news styling for awards */
@@ -1017,9 +977,6 @@
         .mesh-layer,
         .mesh-layer--c,
         .scroll-spectral__fill,
-        .pub-card::before,
-        .pub-card::after,
-        .pub-card:hover::after,
         .pub-gas-molecule,
         .news-item:hover::before,
         .solo-projects::before,
@@ -1028,7 +985,6 @@
         .pub-filter-glider::after {
           animation: none !important;
         }
-        .pub-card:hover::after,
         .news-item:hover::before {
           opacity: 0.35;
         }
@@ -1042,7 +998,6 @@
           animation: none !important;
         }
         .pub-group.pub-group--hide .pub-group-inner {
-          filter: none;
           transform: none;
         }
         #education .timeline-block--current .timeline-dot {
@@ -1757,39 +1712,88 @@
         });
       })();
 
-      // Scroll Spy
-      const sections = document.querySelectorAll('section');
-      const navItems = document.querySelectorAll('.nav-item');
+      // Scroll Spy + spectral progress (rAF-throttled; section tops cached)
+      const sections = Array.prototype.slice.call(document.querySelectorAll('section'));
+      const navItems = Array.prototype.slice.call(document.querySelectorAll('.nav-item'));
+      const rootEl = document.documentElement;
+      const spectralBar = document.getElementById('scrollSpectral');
+      let sectionTops = [];
+      let scrollRaf = 0;
+      let scrollIdleTimer = 0;
+      let lastNavId = '';
+      let lastProgressRounded = -1;
 
-      /* Single scroll handler: nav spy + spectral progress */
-      function onScroll() {
-        let current = '';
-        const scrollPos = window.pageYOffset;
-
-        sections.forEach((section) => {
-          if (scrollPos >= section.offsetTop - 200) {
-            current = section.getAttribute('id');
-          }
+      function cacheSectionTops() {
+        sectionTops = sections.map(function (section) {
+          return {
+            id: section.getAttribute('id'),
+            top: section.offsetTop
+          };
         });
-
-        navItems.forEach((item) => {
-          item.classList.remove('active');
-          if (item.getAttribute('href').includes(current)) {
-            item.classList.add('active');
-          }
-        });
-
-        const root = document.documentElement;
-        const bar = document.getElementById('scrollSpectral');
-        const max = root.scrollHeight - root.clientHeight;
-        const p = max <= 0 ? 0 : Math.min(100, Math.max(0, (root.scrollTop / max) * 100));
-        root.style.setProperty('--scroll-progress', String(p));
-        if (bar) bar.setAttribute('aria-valuenow', String(Math.round(p)));
       }
 
+      function updateScrollUi() {
+        scrollRaf = 0;
+        const scrollPos = window.pageYOffset || rootEl.scrollTop || 0;
+        let current = '';
+        for (var i = 0; i < sectionTops.length; i++) {
+          if (scrollPos >= sectionTops[i].top - 200) current = sectionTops[i].id;
+        }
+        if (current !== lastNavId) {
+          lastNavId = current;
+          for (var n = 0; n < navItems.length; n++) {
+            var item = navItems[n];
+            var on = current && item.getAttribute('href').indexOf(current) !== -1;
+            item.classList.toggle('active', on);
+          }
+        }
+
+        var max = rootEl.scrollHeight - rootEl.clientHeight;
+        var p = max <= 0 ? 0 : Math.min(100, Math.max(0, (rootEl.scrollTop / max) * 100));
+        rootEl.style.setProperty('--scroll-progress', String(p));
+        var rounded = Math.round(p);
+        if (spectralBar && rounded !== lastProgressRounded) {
+          lastProgressRounded = rounded;
+          spectralBar.setAttribute('aria-valuenow', String(rounded));
+        }
+      }
+
+      function onScroll() {
+        document.body.classList.add('is-scrolling');
+        window.clearTimeout(scrollIdleTimer);
+        scrollIdleTimer = window.setTimeout(function () {
+          document.body.classList.remove('is-scrolling');
+        }, 120);
+        if (!scrollRaf) scrollRaf = window.requestAnimationFrame(updateScrollUi);
+      }
+
+      function onResize() {
+        cacheSectionTops();
+        updateScrollUi();
+      }
+
+      cacheSectionTops();
+      updateScrollUi();
       window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll);
-      onScroll();
+      window.addEventListener('resize', onResize);
+
+      /* Drive in-view ambient animations only for visible pub cards */
+      (function initInviewMotion() {
+        var cards = document.querySelectorAll('.pub-card');
+        if (!cards.length || typeof IntersectionObserver === 'undefined') {
+          cards.forEach(function (c) { c.classList.add('is-inview'); });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            for (var i = 0; i < entries.length; i++) {
+              entries[i].target.classList.toggle('is-inview', entries[i].isIntersecting);
+            }
+          },
+          { rootMargin: '80px 0px', threshold: 0.01 }
+        );
+        cards.forEach(function (c) { io.observe(c); });
+      })();
     </script>
   </body>
 </html>
