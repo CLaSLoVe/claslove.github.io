@@ -868,6 +868,41 @@
       .pub-info { width: 100%; position: relative; z-index: 1; }
       .pub-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.4rem; line-height: 1.3; color: var(--fg); }
       .pub-authors { font-size: 0.95rem; color: #555; margin-bottom: 0.4rem; }
+
+      /* Ideal-gas author block (Every Author as Every Author) */
+      .pub-card--gas .pub-authors {
+        font-style: italic;
+        color: #777;
+      }
+      .pub-author-gas {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .pub-gas-molecule {
+        position: absolute;
+        font-family: var(--sans-font);
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        opacity: 0.28;
+        line-height: 1;
+        will-change: transform;
+        animation-name: authorGasDrift;
+        animation-duration: 16s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      @keyframes authorGasDrift {
+        0%   { transform: translate3d(0, 0, 0); }
+        33%  { transform: translate3d(var(--dx), var(--dy), 0); }
+        66%  { transform: translate3d(calc(var(--dx) * -0.7), calc(var(--dy) * 0.85), 0); }
+        100% { transform: translate3d(calc(var(--dx) * 0.35), calc(var(--dy) * -0.55), 0); }
+      }
       .pub-venue-tag {
         display: inline-block;
         font-family: var(--mono-font);
@@ -985,6 +1020,7 @@
         .pub-card::before,
         .pub-card::after,
         .pub-card:hover::after,
+        .pub-gas-molecule,
         .news-item:hover::before,
         .solo-projects::before,
         .band-card::before,
@@ -1274,7 +1310,7 @@
                   {% assign level = 'low' %}
                 {% endif %}
                 {% if level == 'high' %}
-                <div class="pub-card{% if level == 'high' %} pub-card-highlight{% elsif level == 'low' %} pub-card-arxiv{% endif %}">
+                <div class="pub-card{% if level == 'high' %} pub-card-highlight{% elsif level == 'low' %} pub-card-arxiv{% endif %}{% if pub.gas_authors %} pub-card--gas{% endif %}"{% if pub.gas_authors %} data-gas-authors="{{ pub.gas_authors | join: '|' }}"{% endif %}>
                   <div class="pub-header" onclick="togglePub(this)">
                     <div class="pub-info">
                       <div class="pub-title">{{ pub.title }}</div>
@@ -1313,7 +1349,7 @@
                   {% assign level = 'low' %}
                 {% endif %}
                 {% if level == 'normal' %}
-                <div class="pub-card{% if level == 'high' %} pub-card-highlight{% elsif level == 'low' %} pub-card-arxiv{% endif %}">
+                <div class="pub-card{% if level == 'high' %} pub-card-highlight{% elsif level == 'low' %} pub-card-arxiv{% endif %}{% if pub.gas_authors %} pub-card--gas{% endif %}"{% if pub.gas_authors %} data-gas-authors="{{ pub.gas_authors | join: '|' }}"{% endif %}>
                   <div class="pub-header" onclick="togglePub(this)">
                     <div class="pub-info">
                       <div class="pub-title">{{ pub.title }}</div>
@@ -1352,7 +1388,7 @@
                   {% assign level = 'low' %}
                 {% endif %}
                 {% if level == 'low' %}
-                <div class="pub-card{% if level == 'high' %} pub-card-highlight{% elsif level == 'low' %} pub-card-arxiv{% endif %}">
+                <div class="pub-card{% if level == 'high' %} pub-card-highlight{% elsif level == 'low' %} pub-card-arxiv{% endif %}{% if pub.gas_authors %} pub-card--gas{% endif %}"{% if pub.gas_authors %} data-gas-authors="{{ pub.gas_authors | join: '|' }}"{% endif %}>
                   <div class="pub-header" onclick="togglePub(this)">
                     <div class="pub-info">
                       <div class="pub-title">{{ pub.title }}</div>
@@ -1585,6 +1621,52 @@
             var active = wrap.querySelector('.pub-filter-btn.is-active');
             if (active) syncGlider(active);
           });
+        });
+      })();
+
+      (function initAuthorGas() {
+        var cards = document.querySelectorAll('.pub-card[data-gas-authors]');
+        if (!cards.length) return;
+        var copies = 4;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function hashHue(str) {
+          var h = 0;
+          for (var i = 0; i < str.length; i++) h = (h * 71 + str.charCodeAt(i)) >>> 0;
+          return h % 360;
+        }
+
+        cards.forEach(function (card) {
+          if (card.querySelector('.pub-author-gas')) return;
+          var names = card.getAttribute('data-gas-authors').split('|').filter(Boolean);
+          if (!names.length) return;
+
+          var layer = document.createElement('div');
+          layer.className = 'pub-author-gas';
+          layer.setAttribute('aria-hidden', 'true');
+
+          names.forEach(function (name) {
+            var hue = hashHue(name);
+            var color = 'hsl(' + hue + ' 52% 38%)';
+            for (var c = 0; c < copies; c++) {
+              var m = document.createElement('span');
+              m.className = 'pub-gas-molecule';
+              m.textContent = name;
+              m.style.left = 3 + Math.random() * 82 + '%';
+              m.style.top = 8 + Math.random() * 72 + '%';
+              m.style.color = color;
+              var ang = Math.random() * Math.PI * 2;
+              var dist = 14;
+              m.style.setProperty('--dx', (Math.cos(ang) * dist).toFixed(1) + 'px');
+              m.style.setProperty('--dy', (Math.sin(ang) * dist * 0.75).toFixed(1) + 'px');
+              if (!reduce.matches) {
+                m.style.animationDelay = (-Math.random() * 16).toFixed(1) + 's';
+              }
+              layer.appendChild(m);
+            }
+          });
+
+          card.insertBefore(layer, card.firstChild);
         });
       })();
 
