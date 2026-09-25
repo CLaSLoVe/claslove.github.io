@@ -8,6 +8,8 @@ about:
 
 
 news:
+  - date: "2026.9"
+    text: "Side Project with friends 'Stage Light is Sequence2' is accepted by NeurIPS 2026."
   - date: "2026.6"
     text: "Passed the PhD confirmation assessment."
   - date: "2026.6"
@@ -65,8 +67,23 @@ services:
     title: "Reviewer"
   - code: "ICML 2026"
     title: "Silver Reviewer Award"
+  - code: "NeurIPS 2026"
+    title: "Reviewer"
+  - code: "AAAI 2027"
+    title: "Reviewer"
+  - code: "ICLR 2027"
+    title: "Reviewer"
 
 publications:
+  - title: "Stage Light is Sequence2: Multi-Light Control via Imitation Learning"
+    category: "MIR"
+    venue: "NeurIPS 2026"
+    level: "normal"
+    authors: "Zijian Zhao, <b>Dian Jin</b>, Zijing Zhou, Xiaoyu Zhang"
+    abstract: "Music-inspired Automatic Stage Lighting Control (ASLC) has gained increasing attention in recent years due to the substantial time and financial costs associated with hiring and training professional lighting engineers. However, existing methods suffer from several notable limitations: the low interpretability of rule-based approaches, the restriction to single-primary-light control in music-to-color-space methods, and the limited transferability of music-to-controlling-parameter frameworks. To address these gaps, we propose SeqLight, a hierarchical deep learning framework that maps music to multi-light Hue-Saturation-Value (HSV) space. Our approach first customizes SkipBART, an end-to-end single primary light generation model, to predict the full light color distribution for each frame, followed by hybrid Imitation Learning (IL) techniques to derive an effective decomposition strategy that distributes the global color distribution among individual lights. Notably, the light decomposition module can be trained under varying venue-specific lighting configurations using only mixed light data and no professional demonstrations, thereby flexibly adapting across diverse venues. In this stage, we formulate the light decomposition task as a Goal-Conditioned Markov Decision Process (GCMDP), construct an expert demonstration set inspired by Hindsight Experience Replay (HER), and introduce a three-phase IL training pipeline, achieving strong generalization capability. To validate our IL solution for the proposed GCMDP, we conduct a series of quantitative analysis and human study."
+    pdf_url: "https://arxiv.org/abs/2605.03660"
+    code_url: "https://github.com/RS2002/SeqLight"
+
   - title: "Automatic Stage Lighting Control: Is it a Rule-Driven Process or Generative Task?"
     category: "MIR"
     venue: "ICLR 2026"
