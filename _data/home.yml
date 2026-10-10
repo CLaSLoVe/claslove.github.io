@@ -4,32 +4,32 @@ about:
     - "In Human-Computer Interaction (2020-), I study how to provide perception/cognition support based on human state and behavior, reducing information omissions and response lag. "
     - "In AI for Science (2024-), I explore workflow-centric agents that turn models into research collaborators, bridging the gap between scientists and data scientists."
     - "I also engage in collaborative research on topics I find interesting."
-    - "My hobbies are composing music and working out. I am also the lead guitarist of <b>Tokamak Disruption</b>, a metal band."
+    - "My hobbies are composing music and working out. I am also the lead guitarist of <b><a href='https://tokamak-disruption.netlify.app/' target='_blank' rel='noopener noreferrer'>Tokamak Disruption</a></b>, a metal band."
 
 
 news:
   - date: "2026.9"
-    text: "Side Project with friends 'Stage Light is Sequence2' is accepted by NeurIPS 2026."
+    text: "Side Project with friends 'Stage Light is Sequence<sup>2</sup>' is accepted by <b>NeurIPS 2026</b>."
   - date: "2026.6"
     text: "Passed the PhD confirmation assessment."
   - date: "2026.6"
-    text: "Lab collaboration 'Cross-Sensor Adaptation for Surface Shape Sensing' is published in IEEE RA-L."
+    text: "Lab collaboration 'Cross-Sensor Adaptation for Surface Shape Sensing' is published in <b>IEEE RA-L</b>."
   - date: "2026.5"
-    text: "Our Paper 'Efficient Equivariant High-Order Crystal Tensor Prediction' is accepted by ICML 2026."
+    text: "Our Paper 'Efficient Equivariant High-Order Crystal Tensor Prediction' is accepted by <b>ICML 2026</b>."
   - date: "2026.4"
-    text: "Side Project with friends 'Zero-Effort Image-to-Music Generation' is accepted by ICMR 2026."
+    text: "Side Project with friends 'Zero-Effort Image-to-Music Generation' is accepted by <b>ICMR 2026</b>."
   # - date: "2026.4"
-  #   text: "Research internship work 'Accelerating discovery of infrared nonlinear optical materials' is published in npj Computational Materials."
+  #   text: "Research internship work 'Accelerating discovery of infrared nonlinear optical materials' is published in <b>npj Computational Materials</b>."
   - date: "2026.1"
-    text: "Side Project with friends 'Automatic Stage Lighting Control' is accepted by ICLR 2026."
+    text: "Side Project with friends 'Automatic Stage Lighting Control' is accepted by <b>ICLR 2026</b>."
   - date: "2025.11"
-    text: "Our Paper 'Magnitude-Modulated Equivariant Adapter' is accepted by AAAI 2026."
+    text: "Our Paper 'Magnitude-Modulated Equivariant Adapter' is accepted by <b>AAAI 2026</b>."
   - date: "2025.8"
-    text: "Began internship at AISI, Beijing."
+    text: "Began internship at <b>AISI</b>, Beijing."
   - date: "2025.1"
-    text: "Started PhD studies at The Hong Kong Polytechnic University."
+    text: "Started PhD studies at <b>The Hong Kong Polytechnic University</b>."
   - date: "2024.3"
-    text: "Joined the Intelligent Wearable Systems Lab at The Hong Kong Polytechnic University as a Research Assistant."
+    text: "Joined the <b>Intelligent Wearable Systems Lab</b> at <b>The Hong Kong Polytechnic University</b> as a Research Assistant."
 
 education:
   # ongoing: true — larger pulsing dot on this row (period text unchanged).
@@ -75,7 +75,7 @@ services:
     title: "Reviewer"
 
 publications:
-  - title: "Stage Light is Sequence2: Multi-Light Control via Imitation Learning"
+  - title: "Stage Light is Sequence<sup>2</sup>: Multi-Light Control via Imitation Learning"
     category: "MIR"
     venue: "NeurIPS 2026"
     level: "normal"
@@ -280,6 +280,7 @@ life:
     name_line1: "Tokamak"
     name_line2: "Disruption"
     role: "Lead Guitarist."
+    logo: "images/tokamak-disruption-logo.png"
     link: "https://tokamak-disruption.netlify.app/"
     link_label: "Visit band site →"
   projects:
