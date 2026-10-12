@@ -477,111 +477,79 @@
         }
       }
 
-      /* News: click fireworks — dense keyframes + linear timing for smooth motion */
+      /* News: click pops celebration emojis along a ballistic arc */
       #news .news-item {
         cursor: pointer;
       }
       .news-fw-burst {
         pointer-events: none;
         z-index: 4800;
+        background: none;
       }
-      .news-fw-core {
+      .news-fw-emoji {
         position: absolute;
         left: 0;
         top: 0;
-        width: 12px;
-        height: 12px;
-        margin: -6px 0 0 -6px;
-        border-radius: 50%;
-        background: radial-gradient(circle at 38% 38%, #fff 0%, rgba(255, 230, 200, 0.75) 35%, rgba(255, 120, 80, 0.35) 55%, transparent 72%);
-        box-shadow: 0 0 18px rgba(255, 200, 140, 0.65);
-        animation: newsFwCore 1.1s cubic-bezier(0.25, 0.85, 0.2, 1) 0.06s forwards;
+        width: var(--size);
+        height: var(--size);
+        font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+        font-size: var(--size);
+        font-weight: normal;
+        font-style: normal;
+        line-height: 1;
+        background: none;
+        opacity: 0;
+        user-select: none;
+        animation: newsFwEmoji 1.45s linear forwards;
+      }
+      .news-fw-emoji--core {
+        --size: 34px;
+        animation: newsFwCore 0.85s cubic-bezier(0.2, 0.85, 0.2, 1) forwards;
       }
       @keyframes newsFwCore {
         0% {
-          transform: scale3d(0.2, 0.2, 1);
+          transform: translate3d(-50%, -50%, 0) scale(0.2) rotate(-14deg);
           opacity: 0;
         }
-        22% {
-          transform: scale3d(2.05, 2.05, 1);
+        38% {
+          transform: translate3d(-50%, -50%, 0) scale(1.2) rotate(8deg);
           opacity: 1;
-        }
-        48% {
-          transform: scale3d(2.45, 2.45, 1);
-          opacity: 0.72;
         }
         100% {
-          transform: scale3d(4.8, 4.8, 1);
+          transform: translate3d(-50%, -70%, 0) scale(1.45) rotate(18deg);
           opacity: 0;
         }
       }
-      .news-fw-particle {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 3px;
-        height: 3px;
-        margin: -1.5px 0 0 -1.5px;
-        border-radius: 50%;
-        opacity: 0;
-        will-change: transform, opacity;
-        backface-visibility: hidden;
-        animation: newsFwShell 1.52s linear forwards;
-        box-shadow:
-          0 0 6px rgba(255, 255, 255, 0.75),
-          0 0 14px currentColor;
-      }
-      .news-fw-particle--trail {
-        animation-duration: 1.82s;
-      }
-      .news-fw-particle--ember {
-        animation-duration: 2.12s;
-        box-shadow: 0 0 4px rgba(255, 255, 255, 0.55), 0 0 10px currentColor;
-      }
-      /* Smooth ballistic path: (tx,ty)*t + extra downward fall*t^2; many stops + linear easing */
-      @keyframes newsFwShell {
+      /* (tx,ty)*t plus downward fall*t^2; sampled so linear timing still arcs */
+      @keyframes newsFwEmoji {
         0% {
-          transform: translate3d(0, 0, 0) scale3d(1.06, 1.06, 1);
+          transform: translate3d(-50%, -50%, 0) rotate(0deg) scale(0.3);
           opacity: 0;
         }
-        2% {
+        7% {
+          transform: translate3d(calc(-50% + var(--tx) * 0.07), calc(-50% + var(--ty) * 0.07 + var(--fall) * 0.0049), 0) rotate(calc(var(--spin) * 0.07turn)) scale(1.08);
           opacity: 1;
         }
-        9% {
-          transform: translate3d(calc(var(--tx) * 0.09), calc(var(--ty) * 0.09 + var(--fall) * 0.0081), 0) scale3d(1, 1, 1);
+        20% {
+          transform: translate3d(calc(-50% + var(--tx) * 0.2), calc(-50% + var(--ty) * 0.2 + var(--fall) * 0.04), 0) rotate(calc(var(--spin) * 0.2turn)) scale(1);
           opacity: 1;
-        }
-        18% {
-          transform: translate3d(calc(var(--tx) * 0.18), calc(var(--ty) * 0.18 + var(--fall) * 0.0324), 0) scale3d(0.98, 0.98, 1);
-        }
-        27% {
-          transform: translate3d(calc(var(--tx) * 0.27), calc(var(--ty) * 0.27 + var(--fall) * 0.0729), 0) scale3d(0.95, 0.95, 1);
         }
         36% {
-          transform: translate3d(calc(var(--tx) * 0.36), calc(var(--ty) * 0.36 + var(--fall) * 0.1296), 0) scale3d(0.9, 0.9, 1);
+          transform: translate3d(calc(-50% + var(--tx) * 0.36), calc(-50% + var(--ty) * 0.36 + var(--fall) * 0.1296), 0) rotate(calc(var(--spin) * 0.36turn)) scale(1);
         }
-        45% {
-          transform: translate3d(calc(var(--tx) * 0.45), calc(var(--ty) * 0.45 + var(--fall) * 0.2025), 0) scale3d(0.84, 0.84, 1);
+        52% {
+          transform: translate3d(calc(-50% + var(--tx) * 0.52), calc(-50% + var(--ty) * 0.52 + var(--fall) * 0.2704), 0) rotate(calc(var(--spin) * 0.52turn)) scale(0.98);
         }
-        54% {
-          transform: translate3d(calc(var(--tx) * 0.54), calc(var(--ty) * 0.54 + var(--fall) * 0.2916), 0) scale3d(0.74, 0.74, 1);
+        68% {
+          transform: translate3d(calc(-50% + var(--tx) * 0.68), calc(-50% + var(--ty) * 0.68 + var(--fall) * 0.4624), 0) rotate(calc(var(--spin) * 0.68turn)) scale(0.96);
+          opacity: 1;
         }
-        63% {
-          transform: translate3d(calc(var(--tx) * 0.63), calc(var(--ty) * 0.63 + var(--fall) * 0.3969), 0) scale3d(0.62, 0.62, 1);
-        }
-        72% {
-          transform: translate3d(calc(var(--tx) * 0.72), calc(var(--ty) * 0.72 + var(--fall) * 0.5184), 0) scale3d(0.48, 0.48, 1);
-        }
-        81% {
-          transform: translate3d(calc(var(--tx) * 0.81), calc(var(--ty) * 0.81 + var(--fall) * 0.6561), 0) scale3d(0.34, 0.34, 1);
-          opacity: 0.92;
-        }
-        90% {
-          transform: translate3d(calc(var(--tx) * 0.9), calc(var(--ty) * 0.9 + var(--fall) * 0.81), 0) scale3d(0.2, 0.2, 1);
+        84% {
+          transform: translate3d(calc(-50% + var(--tx) * 0.84), calc(-50% + var(--ty) * 0.84 + var(--fall) * 0.7056), 0) rotate(calc(var(--spin) * 0.84turn)) scale(0.92);
           opacity: 0.55;
         }
         100% {
-          transform: translate3d(var(--tx), calc(var(--ty) + var(--fall)), 0) scale3d(0.1, 0.1, 1);
+          transform: translate3d(calc(-50% + var(--tx)), calc(-50% + var(--ty) + var(--fall)), 0) rotate(calc(var(--spin) * 1turn)) scale(0.86);
           opacity: 0;
         }
       }
@@ -786,6 +754,7 @@
       #publications .pub-group:first-child .pub-category {
         margin-top: 1rem;
       }
+      #pub-groups[data-pub-filter="Olfactory"] .pub-group[data-pub-cat="Olfactory"] .pub-category,
       #pub-groups[data-pub-filter="AI4Sci"] .pub-group[data-pub-cat="AI4Sci"] .pub-category,
       #pub-groups[data-pub-filter="MIR"] .pub-group[data-pub-cat="MIR"] .pub-category,
       #pub-groups[data-pub-filter="HCI"] .pub-group[data-pub-cat="HCI"] .pub-category,
@@ -1388,8 +1357,7 @@
         #news .news-item {
           cursor: default;
         }
-        .news-fw-core,
-        .news-fw-particle {
+        .news-fw-emoji {
           animation: none !important;
         }
         .brand-avatar-btn,
@@ -1612,7 +1580,7 @@
 
           {% assign pub_groups = home.publications | group_by: "category" %}
           <!-- Customize your category order here -->
-          {% assign cat_order = "AI4Sci|MIR|HCI|MISC" | split:"|" %}
+          {% assign cat_order = "Olfactory|AI4Sci|MIR|HCI|MISC" | split:"|" %}
 
           <div class="pub-filter-wrap" id="pub-filter-wrap">
             <div class="pub-filter-track" role="tablist" aria-label="Filter publications">
@@ -1627,12 +1595,15 @@
                 {% endfor %}
                 {% if cat_btn %}
                 <button type="button" class="pub-filter-btn" role="tab" aria-selected="false" data-pub-filter="{{ cat }}"
-                  {% if cat == "AI4Sci" %}title="AI for Science"
+                  {% if cat == "Olfactory" %}title="Digital Olfactory"
+                  {% elsif cat == "AI4Sci" %}title="AI for Science"
                   {% elsif cat == "HCI" %}title="Human–Computer Interaction"
                   {% elsif cat == "MIR" %}title="Music Information Retrieval"
                   {% elsif cat == "MISC" %}title="Curious &amp; Fun Research"
                   {% endif %}>
-                  {% if cat == "AI4Sci" %}
+                  {% if cat == "Olfactory" %}
+                    Olfactory
+                  {% elsif cat == "AI4Sci" %}
                     AI4Sci
                   {% elsif cat == "HCI" %}
                     HCI
@@ -1657,7 +1628,9 @@
                 <div class="pub-group" data-pub-cat="{{ cat }}">
                 <div class="pub-group-inner">
                 <div class="pub-category">
-                  {% if cat == "AI4Sci" %}
+                  {% if cat == "Olfactory" %}
+                    Digital Olfactory
+                  {% elsif cat == "AI4Sci" %}
                     AI for Science
                   {% elsif cat == "HCI" %}
                     Human–Computer Interaction
@@ -2087,17 +2060,7 @@
           var now = Date.now();
           if (now - lastBurst < 220) return;
           lastBurst = now;
-          var colors = [
-            '#0044CC',
-            '#5b6cff',
-            '#00b8ff',
-            '#00d4aa',
-            '#c44cff',
-            '#ff3d8a',
-            '#ffd447',
-            '#ffb347',
-            '#ff6b3d'
-          ];
+          var glyphs = ['🎉', '✨', '💫', '✨', '💫'];
           var root = document.createElement('div');
           root.className = 'news-fw-burst';
           root.setAttribute('aria-hidden', 'true');
@@ -2106,54 +2069,42 @@
             clientX +
             'px;top:' +
             clientY +
-            'px;width:0;height:0;pointer-events:none;z-index:4800;';
+            'px;width:0;height:0;pointer-events:none;z-index:4800;background:none;';
 
           var core = document.createElement('span');
-          core.className = 'news-fw-core';
+          core.className = 'news-fw-emoji news-fw-emoji--core';
+          core.textContent = '🎉';
           root.appendChild(core);
 
-          function addShellParticle(baseAng, i, distMin, distMax, trail, ember, delayBase) {
-            var ang = baseAng + (Math.random() - 0.5) * 0.32;
+          function addEmoji(baseAng, i, distMin, distMax) {
+            var ang = baseAng + (Math.random() - 0.5) * 0.45;
             var dist = distMin + Math.random() * (distMax - distMin);
-            var tx = Math.cos(ang) * dist;
-            var ty = Math.sin(ang) * dist * 0.7 - 10 - Math.random() * 16;
-            var fall = (ember ? 52 : 40) + Math.random() * (ember ? 55 : 50);
-            var sz = ember ? 1.3 + Math.random() * 1.4 : 2.2 + Math.random() * 2.5;
-            var col = colors[Math.floor(Math.random() * colors.length)];
+            var glyph = glyphs[Math.floor(Math.random() * glyphs.length)];
+            var sparkle = glyph === '✨' || glyph === '💫' || glyph === '🌟';
+            var size = sparkle ? 15 + Math.random() * 8 : 22 + Math.random() * 10;
             var p = document.createElement('span');
-            p.className = 'news-fw-particle';
-            if (trail) p.className += ' news-fw-particle--trail';
-            if (ember) p.className += ' news-fw-particle--ember';
-            p.style.setProperty('--tx', tx + 'px');
-            p.style.setProperty('--ty', ty + 'px');
-            p.style.setProperty('--fall', fall + 'px');
-            p.style.color = col;
-            p.style.background = col;
-            p.style.width = sz + 'px';
-            p.style.height = sz + 'px';
-            p.style.margin = -sz / 2 + 'px 0 0 ' + -sz / 2 + 'px';
-            p.style.animationDelay = delayBase + Math.random() * 0.055 + i * 0.0025 + 's';
+            p.className = 'news-fw-emoji';
+            p.textContent = glyph;
+            p.style.setProperty('--tx', (Math.cos(ang) * dist).toFixed(1) + 'px');
+            p.style.setProperty('--ty', (Math.sin(ang) * dist * 0.72 - 16 - Math.random() * 22).toFixed(1) + 'px');
+            p.style.setProperty('--fall', (28 + Math.random() * 64).toFixed(1) + 'px');
+            p.style.setProperty('--spin', (Math.random() * 1.4 - 0.7).toFixed(3));
+            p.style.setProperty('--size', size.toFixed(1) + 'px');
+            p.style.animationDelay = (Math.random() * 0.06 + i * 0.008).toFixed(3) + 's';
             root.appendChild(p);
           }
 
-          var nMain = 26;
+          var n = 14;
           var i;
-          for (i = 0; i < nMain; i++) {
-            addShellParticle((Math.PI * 2 * i) / nMain, i, 32, 82, false, false, 0.1);
-          }
-          var nTrail = 16;
-          for (i = 0; i < nTrail; i++) {
-            addShellParticle((Math.PI * 2 * i) / nTrail + 0.18, i, 58, 118, true, false, 0.1);
-          }
-          var nEmber = 12;
-          for (i = 0; i < nEmber; i++) {
-            addShellParticle((Math.PI * 2 * i) / nEmber + 0.52, i, 20, 58, false, true, 0.13);
+          for (i = 0; i < n; i++) {
+            var far = i % 3 === 0;
+            addEmoji((Math.PI * 2 * i) / n, i, far ? 64 : 28, far ? 118 : 78);
           }
 
           document.body.appendChild(root);
           window.setTimeout(function () {
             if (root.parentNode) root.parentNode.removeChild(root);
-          }, 2450);
+          }, 1700);
         }
 
         sec.addEventListener('click', function (e) {
