@@ -8,12 +8,16 @@ about:
 
 
 news:
+  - date: "2026.10"
+    text: "Received the <b>Top Reviewer Award</b> at <b>NeurIPS 2026</b>."
   - date: "2026.9"
     text: "Side Project with friends 'Stage Light is Sequence<sup>2</sup>' is accepted by <b>NeurIPS 2026</b>."
   - date: "2026.6"
     text: "Passed the PhD confirmation assessment."
   - date: "2026.6"
     text: "Lab collaboration 'Cross-Sensor Adaptation for Surface Shape Sensing' is published in <b>IEEE RA-L</b>."
+  - date: "2026.5"
+    text: "Received the <b>Silver Reviewer Award</b> at <b>ICML 2026</b>."
   - date: "2026.5"
     text: "Our Paper 'Efficient Equivariant High-Order Crystal Tensor Prediction' is accepted by <b>ICML 2026</b>."
   - date: "2026.4"
@@ -68,7 +72,7 @@ services:
   - code: "ICML 2026"
     title: "Silver Reviewer Award"
   - code: "NeurIPS 2026"
-    title: "Reviewer"
+    title: "Top Reviewer Award"
   - code: "AAAI 2027"
     title: "Reviewer"
   - code: "ICLR 2027"
