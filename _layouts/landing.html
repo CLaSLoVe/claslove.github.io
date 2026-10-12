@@ -203,7 +203,15 @@
         margin-bottom: 1.15rem;
         border: 0;
         box-shadow: 0 0 0 1px var(--border-med);
-        transition: box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      @media (hover: hover) and (pointer: fine) {
+        .brand > .brand-avatar:hover {
+          transform: translateY(-3px) scale(1.18);
+          box-shadow:
+            0 0 0 1px rgba(0, 68, 204, 0.28),
+            0 16px 34px rgba(26, 26, 26, 0.18);
+        }
       }
       .brand-avatar-btn {
         appearance: none;
@@ -1395,7 +1403,8 @@
           transition: none !important;
         }
         .brand-avatar-btn:hover,
-        .brand-avatar-btn:focus-visible {
+        .brand-avatar-btn:focus-visible,
+        .brand > .brand-avatar:hover {
           transform: none;
         }
         html { scroll-behavior: auto; }
@@ -1485,11 +1494,17 @@
       <aside class="sidebar">
         <div>
           <div class="brand">
+            {% comment %}
+            Album open entry. Uncomment this button to let the portrait open the floating album.
             {% if site.data.home.album and site.data.home.album.size > 0 %}
             <button type="button" class="brand-avatar-btn" id="albumTrigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="photoAlbum" aria-label="Open photo album">
               <img class="brand-avatar" src="{{ site.author.avatar }}" alt="" draggable="false">
             </button>
             {% elsif site.author.avatar %}
+            <img class="brand-avatar" src="{{ site.author.avatar }}" alt="{{ site.author.name }}">
+            {% endif %}
+            {% endcomment %}
+            {% if site.author.avatar %}
             <img class="brand-avatar" src="{{ site.author.avatar }}" alt="{{ site.author.name }}">
             {% endif %}
             <h1>{{ site.author.name | replace: ' ', '<br>' }}</h1>
