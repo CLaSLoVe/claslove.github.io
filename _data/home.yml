@@ -293,4 +293,10 @@ life:
     - label: "Tiny Loops"
       url: "https://music.163.com/#/album?id=157976839"
 
+# First photo is the one that grows out of the sidebar portrait.
+album:
+  - src: images/avatar.png
+    alt: "Dian Jin playing guitar on stage"
+    # caption: "On stage."
+
 
