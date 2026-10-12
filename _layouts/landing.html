@@ -187,7 +187,7 @@
         top: 0;
         padding: clamp(1.5rem, 6vh, 5rem) 2.5rem;
         border-right: 1px solid var(--border-light);
-        display: flex; flex-direction: column; justify-content: space-between;
+        display: flex; flex-direction: column; justify-content: flex-start;
         /* Opaque enough to skip backdrop-filter (major scroll cost over animated mesh) */
         background: rgba(250, 250, 250, 0.96);
         flex-shrink: 0;
@@ -329,13 +329,19 @@
       .nav-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
 
       .contact-info {
-        margin-top: 2.5rem;
+        margin-top: clamp(3rem, 8vh, 5rem);
         font-family: var(--mono-font);
         font-size: 0.8rem;
         display: flex;
         flex-direction: column;
         gap: 0.4rem;
         color: #333;
+      }
+      .contact-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.65rem 1rem;
+        margin-top: 1.25rem;
       }
       .contact-link {
         border-bottom: 1px solid transparent;
@@ -1518,17 +1524,17 @@
           <div>Hong Kong, China</div>
           {% endif %}
 
-          <div style="margin-top:10px;">
+          <div class="contact-links">
           {% if site.author.email %}
-          <a href="mailto:{{ site.author.email }}" class="contact-link">Email ↗</a><br>
+          <a href="mailto:{{ site.author.email }}" class="contact-link">Email ↗</a>
           {% endif %}
           
           {% if site.author.github %}
-          <a href="https://github.com/{{ site.author.github }}" class="contact-link">Github ↗</a><br>
+          <a href="https://github.com/{{ site.author.github }}" class="contact-link">Github ↗</a>
           {% endif %}
 
           {% if site.author.linkedin %}
-          <a href="{{ site.author.linkedin }}" class="contact-link">LinkedIn ↗</a><br>
+          <a href="{{ site.author.linkedin }}" class="contact-link">LinkedIn ↗</a>
           {% endif %}
 
           {% if site.author.googlescholar %}
