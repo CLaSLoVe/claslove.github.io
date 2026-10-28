@@ -29,7 +29,7 @@ news:
   - date: "2025.11"
     text: "Our Paper 'Magnitude-Modulated Equivariant Adapter' is accepted by <b>AAAI 2026</b>."
   - date: "2025.8"
-    text: "Began internship at <b>AISI</b>, Beijing."
+    text: "Began internship at <b>AI for Science Institute [AISI]</b>, Beijing."
   - date: "2025.1"
     text: "Started PhD studies at <b>The Hong Kong Polytechnic University</b>."
   - date: "2024.3"
@@ -50,7 +50,7 @@ education:
 
 experience:
   - period: "2025.8 - 2025.9"
-    organization: "AISI, Beijing"
+    organization: "AI for Science Institute [AISI], Beijing"
     role: "Research Intern"
   - period: "2024.3 - 2024.12"
     organization: "The Hong Kong Polytechnic University"
