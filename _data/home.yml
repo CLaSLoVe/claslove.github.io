@@ -85,7 +85,7 @@ services:
 publications:
   - title: "Stage Light is Sequence<sup>2</sup>: Multi-Light Control via Imitation Learning"
     category: "Creative"
-    venue: "NeurIPS 2026 · Accepted"
+    venue: "NeurIPS 2026"
     level: "normal"
     authors: "Zijian Zhao, <b>Dian Jin</b>, Zijing Zhou, Xiaoyu Zhang"
     contribution: "With collaborators, learn multi-light stage control from demonstrations and retarget it across venues."
@@ -95,7 +95,7 @@ publications:
 
   - title: "Automatic Stage Lighting Control: Is it a Rule-Driven Process or Generative Task?"
     category: "Creative"
-    venue: "ICLR 2026 · Published"
+    venue: "ICLR 2026"
     level: "normal"
     authors: "Zijian Zhao, <b>Dian Jin</b>, Zijing Zhou, Xiaoyu Zhang"
     contribution: "With collaborators, generate human-like stage lighting directly from music."
@@ -105,7 +105,7 @@ publications:
 
   - title: "Magnitude-Modulated Equivariant Adapter for Parameter-Efficient Fine-Tuning of Equivariant Graph Neural Networks"
     category: "AI4Sci"
-    venue: "AAAI 2026 · Published"
+    venue: "AAAI 2026"
     level: "normal"
     authors: "<b>Dian Jin</b>, Yancheng Yuan, Xiaoming Tao"
     contribution: "Adapt equivariant models to new chemical settings with fewer trainable parameters while preserving symmetry."
@@ -115,7 +115,7 @@ publications:
 
   - title: "Efficient Equivariant High-Order Crystal Tensor Prediction via Cartesian Local-Environment Many-Body Coupling"
     category: "AI4Sci"
-    venue: "ICML 2026 · Published"
+    venue: "ICML 2026"
     level: "normal"
     authors: "<b>Dian Jin</b>, Yancheng Yuan, Xiaoming Tao"
     contribution: "Efficiently predict direction-dependent higher-order crystal properties."
@@ -125,7 +125,7 @@ publications:
 
   - title: "Accelerating discovery of infrared nonlinear optical materials with large shift current via high-throughput screening"
     category: "AI4Sci"
-    venue: "npj Computational Materials 2026 · Published"
+    venue: "npj Computational Materials"
     level: "normal"
     authors: "Aiqin Yang, <b>Dian Jin</b>, Mingkang Liu, Daye Zheng, Qi Wang, Qiangqiang Gu, Jian-Hua Jiang"
     contribution: "Screen a large materials database for infrared nonlinear optical candidates and release the results as a dataset."
@@ -135,7 +135,7 @@ publications:
 
   - title: "Zero-Effort Image-to-Music Generation: An Interpretable RAG-based VLM Approach"
     category: "Creative"
-    venue: "ICMR 2026 · Published"
+    venue: "ICMR 2026"
     level: "normal"
     authors: "Zijian Zhao, <b>Dian Jin</b>, Zijing Zhou"
     contribution: "With collaborators, turn an image into explainable music with a vision-language model and no extra training."
@@ -145,7 +145,7 @@ publications:
 
   - title: "Rotational Sampling: A Plug-and-Play Encoder for Rotation-Invariant 3D Molecular GNNs"
     category: "AI4Sci"
-    venue: "arXiv 2025 · Preprint"
+    venue: "Arxiv"
     level: "low"
     authors: "<b>Dian Jin</b>"
     contribution: "Give 3D molecular models approximate rotation invariance through a lightweight plug-in encoder."
@@ -155,7 +155,7 @@ publications:
 
   - title: "Fitting an Elephant with Four non-Zero Parameters"
     category: "MISC"
-    venue: "SIGBOVIK 2026 · Published"
+    venue: "SIGBOVIK 2026"
     level: "normal"
     authors: "<b>Dian Jin</b>, Junze Yuan"
     contribution: "Turn von Neumann’s four-parameter elephant into a well-posed curve-fitting problem and give an explicit solution."
@@ -165,7 +165,7 @@ publications:
 
   - title: "Every Author as Every Author"
     category: "MISC"
-    venue: "Preprint 2026"
+    venue: "Preprint"
     level: "low"
     authors: "Authors are in the background."
     contribution: "Print every coauthor from the same spatial distribution, so each name is equally likely to be read first."
@@ -180,7 +180,7 @@ publications:
 
   - title: "Some Thoughts on Symbolic Transfer Entropy"
     category: "MISC"
-    venue: "arXiv 2024 · Preprint"
+    venue: "Arxiv"
     level: "low"
     authors: "<b>Dian Jin</b>"
     contribution: "Make symbolic transfer entropy usable on complex series by choosing the embedding dimension more carefully."
@@ -190,7 +190,7 @@ publications:
 
   - title: "olBlend: Language-Guided Molecular Blend Retrieval with Mixture Odor Prediction"
     category: "Olfactory"
-    venue: "arXiv 2026 · Preprint"
+    venue: "Arxiv"
     level: "low"
     authors: "<b>Dian Jin</b>, Zhechang Chen, Qilin Liang, Yonghui Luo, Zixun Fu, Defeng Sun, Yancheng Yuan, Xiaoming Tao"
     contribution: "Turn a natural-language scent request into mixtures that can be prepared from a stocked inventory."
@@ -200,7 +200,7 @@ publications:
 
   - title: "A Novel Method with Encoder-Decoder for Cross-Sensor Adaptation in Surface Shape Sensing with Sparse Strain Sensors"
     category: "HCI"
-    venue: "IEEE RA-L 2026 · Published"
+    venue: "IEEE RA-L"
     level: "normal"
     authors: "Shuo Wang, Heng Luo, <b>Dian Jin</b>, Xiaoming Tao"
     contribution: "Adapt a shape-sensing model to a new sensor array in about a second, using only a few labeled examples."
@@ -210,7 +210,7 @@ publications:
 
   - title: "Towards pilot's situation awareness enhancement: A framework of adaptive interaction system and its realization"
     category: "HCI"
-    venue: "ISA Trans 2023 · Published"
+    venue: "ISA Trans"
     level: "normal"
     authors: "Weiwei Yu, <b>Dian Jin</b>, Feng Zhao, Xiaokun Zhang"
     contribution: "Predict a pilot’s upcoming workload and bring forward the information they are about to miss."
@@ -220,7 +220,7 @@ publications:
 
   - title: "Mining attention distribution paradigm: Discover gaze patterns and their association rules behind the visual image"
     category: "HCI"
-    venue: "CMPB 2023 · Published"
+    venue: "CMPB"
     level: "normal"
     authors: "Weiwei Yu, Feng Zhao, Zhijun Ren, <b>Dian Jin</b>, Xinliang Yang, Xiaokun Zhang"
     contribution: "Mine gaze sequences for the recurring patterns in how people allocate visual attention."
@@ -230,7 +230,7 @@ publications:
 
   - title: "Towards tacit knowledge mining within context: Visual cognitive graph model and eye movement image interpretation"
     category: "HCI"
-    venue: "CMPB 2022 · Published"
+    venue: "CMPB"
     level: "normal"
     authors: "Weiwei Yu, <b>Dian Jin</b>, Wenfeng Cai, Feng Zhao, Xiaokun Zhang"
     contribution: "Turn an expert’s eye movements into explicit rules about which information matters in a task."
@@ -240,7 +240,7 @@ publications:
 
   - title: "Design of syntactic adaptive interactive system based on human perception state estimation within scenario context"
     category: "HCI"
-    venue: "JAIHC 2023 · Published"
+    venue: "JAIHC"
     level: "normal"
     authors: "<b>Dian Jin</b>, Weiwei Yu, Xinliang Yang, Haiyang Wang &amp; Ran Peng"
     contribution: "Estimate what an operator has not yet seen, and prompt that information for the current scene."
@@ -250,7 +250,7 @@ publications:
 
   - title: "To Discover Novice Expert Paradigm: Sequence-Based Time-Domain and Graph-Based Frequency-Domain Analysis Method of Eye Movement"
     category: "HCI"
-    venue: "HCII 2022 · Published"
+    venue: "HCII 2022"
     level: "normal"
     authors: "<b>Dian Jin</b>, Weiwei Yu, Xinliang Yang, Haiyang Wang &amp; Ran Peng"
     contribution: "Compare novice and expert gaze sequences to recover the information links experts use."
@@ -260,7 +260,7 @@ publications:
 
   - title: "Adaptive Visual Information Support System"
     category: "HCI"
-    venue: "IEEE CyberSciTech 2022 · Published"
+    venue: "IEEE CyberSciTech 2022"
     level: "normal"
     authors: "Weiwei Yu, <b>Dian Jin</b>, Xiaokun Zhang"
     contribution: "Recover the visual information a pilot missed and present it according to how it relates to the rest of the display."
@@ -270,7 +270,7 @@ publications:
 
   - title: "Performance Index Based on Predicted Auditory Reaction Time Analysis for the Evaluation of Human-Machine Interface in Flight Control"
     category: "HCI"
-    venue: "CMMM 2022 · Published"
+    venue: "CMMM"
     level: "normal"
     authors: "Weiwei Yu, <b>Dian Jin</b>, Xinliang Yang, Feng Zhao, Haiyang Wang, Ran Peng"
     contribution: "Score a cockpit interface by predicted auditory reaction time, measured from eye tracking during the task."
