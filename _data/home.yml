@@ -153,6 +153,16 @@ publications:
     pdf_url: "https://arxiv.org/pdf/2507.01073"
     code_url: ""
 
+  - title: "IfWorld: A Multi-Agent Framework for Cross-Disciplinary Counterfactual Scenario Reasoning"
+    category: "MISC"
+    venue: "OpenReview"
+    level: "low"
+    authors: "<b>Dian Jin</b>, Zijian Zhao, Zijing Zhou"
+    contribution: "With collaborators, turn a vague what-if into a structured, cross-disciplinary scenario report."
+    abstract: "Counterfactual “what if” questions are increasingly relevant in both education, where structured exploration can help students reason across disciplinary boundaries, and in crisis governance, where transparent scenario planning supports preparedness and deliberation. Current approaches often remain fragmented because disciplinary silos use incompatible assumptions and metrics, and common large language model workflows such as single agent reasoning, tree search, or debate rarely transform vague prompts into structured and uncertainty aware scenarios. We introduce IfWorld, a multi-agent system designed for cross-disciplinary counterfactual and hypothetical scenario reasoning. IfWorld transforms vague propositions into actionable scenarios, orchestrates parallel domain experts (e.g., physics, materials chemistry, biology/ecology, medicine, sociology, economics, engineering, environment, politics), detects and reconciles conflicts, and generates structured, uncertainty-aware reports with measurable indicators for evaluation. Across diverse topics, IfWorld outperforms other baselines, demonstrating clearer cross-domain reasoning chains, explicit uncertainty modeling, and decision-oriented scenario structures. We envision applications in fostering educational “what-if” explorations and in supporting structured deliberation during public crises."
+    pdf_url: "https://openreview.net/pdf?id=BtwfpDb1OO"
+    code_url: "https://github.com/CLaSLoVe/If-World"
+
   - title: "Fitting an Elephant with Four non-Zero Parameters"
     category: "MISC"
     venue: "SIGBOVIK 2026"
