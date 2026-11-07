@@ -104,6 +104,12 @@ publications:
     code_url: "https://github.com/RS2002/Skip-BART"
 
   - title: "Magnitude-Modulated Equivariant Adapter for Parameter-Efficient Fine-Tuning of Equivariant Graph Neural Networks"
+    feature_order: 2
+    feature_image: "images/research/mmea.png"
+    feature_topic: "AI for Science"
+    feature_alt: "MMEA scalar gating adapter preserving equivariance during fine-tuning"
+    feature_width: 964
+    feature_height: 1234
     category: "AI4Sci"
     venue: "AAAI 2026"
     level: "normal"
@@ -114,6 +120,12 @@ publications:
     code_url: "https://github.com/CLaSLoVe/MMEA"
 
   - title: "Efficient Equivariant High-Order Crystal Tensor Prediction via Cartesian Local-Environment Many-Body Coupling"
+    feature_order: 1
+    feature_image: "images/research/ceitnet.png"
+    feature_topic: "AI for Science"
+    feature_alt: "CEITNet architecture from crystal structures to equivariant tensor predictions"
+    feature_width: 1773
+    feature_height: 615
     category: "AI4Sci"
     venue: "ICML 2026"
     level: "normal"
@@ -199,6 +211,12 @@ publications:
     code_url: ""
 
   - title: "olBlend: Language-Guided Molecular Blend Retrieval with Mixture Odor Prediction"
+    feature_order: 3
+    feature_image: "images/research/olblend.png"
+    feature_topic: "Digital Olfaction"
+    feature_alt: "Language-guided odor mixture retrieval and prediction framework"
+    feature_width: 3055
+    feature_height: 1960
     category: "Olfactory"
     venue: "Arxiv"
     level: "low"

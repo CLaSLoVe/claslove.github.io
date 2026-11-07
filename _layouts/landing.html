@@ -50,10 +50,11 @@
         --mono-font: 'JetBrains Mono', monospace;
         --sans-font: 'Unbounded', sans-serif;
         --serif-font: 'Newsreader', serif;
+        --reading-font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         
         /* Layout */
-        --sidebar-width: 300px;
-        --content-padding: 6rem;
+        --sidebar-width: 280px;
+        --content-padding: clamp(2.25rem, 4.5vw, 4rem);
         --timeline-date-width: 160px;
       }
 
@@ -172,7 +173,7 @@
       /* --- Layout Container --- */
       .container {
         display: flex;
-        max-width: 1440px;
+        max-width: 1480px;
         margin: 0 auto;
         position: relative;
         z-index: 1;
@@ -185,7 +186,7 @@
         height: 100dvh;
         position: sticky;
         top: 0;
-        padding: clamp(1.5rem, 6vh, 5rem) 2.5rem;
+        padding: 2.5rem 1.75rem;
         border-right: 1px solid var(--border-light);
         display: flex; flex-direction: column; justify-content: flex-start;
         /* Opaque enough to skip backdrop-filter (major scroll cost over animated mesh) */
@@ -305,7 +306,7 @@
         gap: 0.12rem;
         margin: 0 0 0.55rem;
         font-family: var(--sans-font);
-        font-size: 0.78rem;
+        font-size: 0.95rem;
         font-weight: 500;
         line-height: 1.35;
         color: #777;
@@ -324,7 +325,7 @@
         z-index: 1010;
         width: 122px;
         font: 400 12px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        opacity: 0.2;
+        opacity: 0.45;
         transition: opacity 600ms ease;
         -webkit-user-select: none;
         user-select: none;
@@ -451,7 +452,7 @@
       }
 
       .contact-info {
-        margin-top: clamp(3rem, 8vh, 5rem);
+        margin-top: 1.75rem;
         font-family: var(--mono-font);
         font-size: 0.8rem;
         display: flex;
@@ -481,7 +482,7 @@
         background: rgba(255, 255, 255, 0.94);
       }
 
-      section { margin-bottom: 8rem; scroll-margin-top: 100px; }
+      section { margin-bottom: 4.5rem; scroll-margin-top: 100px; }
 
       /* Pause heavy ambient motion while scrolling — keeps idle look, frees compositor */
       body.is-scrolling .mesh-layer,
@@ -495,12 +496,12 @@
 
       /* Section Headers */
       .section-header {
-        border-top: 3px solid var(--fg);
+        border-top: 1px solid var(--border-med);
         padding-top: 1rem;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         font-family: var(--sans-font);
         font-weight: 700;
-        font-size: 1.75rem;
+        font-size: 1.6rem;
         color: var(--fg);
         display: flex;
         align-items: center;
@@ -519,8 +520,8 @@
 
       /* --- 1. About / Intro --- */
       .intro-container {
-        max-width: 720px;
-        margin-bottom: 6rem;
+        max-width: 900px;
+        margin-bottom: 3.5rem;
       }
 
       /* First paragraph: lead-in style */
@@ -536,8 +537,8 @@
       /* Subsequent paragraphs: serif body text for readability */
       .intro-text p:not(.intro-lead) {
         font-family: var(--serif-font);
-        font-size: 1.15rem;
-        line-height: 1.7;
+        font-size: 1.3125rem;
+        line-height: 1.6;
         color: #444;
         margin-bottom: 1.2rem;
       }
@@ -783,7 +784,7 @@
         position: relative;
         z-index: 1;
       }
-      .news-text { font-size: 1rem; line-height: 1.5; position: relative; z-index: 1; }
+      .news-text { font-size: 1.1875rem; line-height: 1.5; position: relative; z-index: 1; }
       .news-earlier {
         display: grid;
         grid-template-rows: 1fr;
@@ -1052,7 +1053,7 @@
       }
 
       .pub-info { width: 100%; position: relative; z-index: 1; }
-      .pub-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.4rem; line-height: 1.45; color: var(--fg); }
+      .pub-title { font-family: var(--reading-font); font-size: 1.375rem; font-weight: 600; margin-bottom: 0.4rem; line-height: 1.45; color: var(--fg); }
       .pub-title-links {
         display: inline-flex;
         align-items: center;
@@ -1063,10 +1064,10 @@
       }
       .pub-title-links .text-btn {
         padding: 1px 7px;
-        font-size: 0.65rem;
+        font-size: 0.8125rem;
         line-height: 1.6;
       }
-      .pub-authors { font-size: 0.95rem; color: #555; margin-bottom: 0.4rem; }
+      .pub-authors { font-size: 1.0625rem; color: #555; margin-bottom: 0.4rem; }
 
       /* Ideal-gas author block (Every Author as Every Author) */
       .pub-card--gas .pub-authors {
@@ -1108,7 +1109,7 @@
       .pub-venue-tag {
         display: inline-block;
         font-family: var(--mono-font);
-        font-size: 0.7rem;
+        font-size: 0.875rem;
         line-height: 1.45;
         background: #e8f1ff;  /* soft blue for normal level */
         color: var(--accent);
@@ -1151,11 +1152,11 @@
         z-index: 1;
       }
       .pub-card.active .pub-details { border-top-color: var(--border-light); }
-      .pub-inner { padding: 1.5rem; font-size: 0.95rem; color: #444; line-height: 1.6; }
+      .pub-inner { padding: 1.5rem; font-size: 1.125rem; color: #444; line-height: 1.6; }
 
       .btn-row { display: flex; gap: 0.8rem; margin-bottom: 1rem; }
       .text-btn {
-        font-family: var(--mono-font); font-size: 0.7rem; 
+        font-family: var(--mono-font); font-size: 0.8125rem;
         border: 1px solid var(--border-med); padding: 4px 10px; border-radius: 4px;
         color: #333; background-color: #fff;
         transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
@@ -1660,6 +1661,49 @@
         /* Slightly reduce lead size on smaller screens */
         .intro-lead { font-size: 1.3rem; }
       }
+
+      /* Research-led presentation: readable evidence, restrained framing. */
+      .brand-role { font-family: var(--reading-font); color: #444; line-height: 1.5; }
+      .section-header h2 { font: inherit; }
+      .research-feature { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr); gap: 2rem; align-items: center; padding: 2rem 0; border-bottom: 1px solid var(--border-med); }
+      .research-feature:first-of-type { padding-top: 0; }
+      .research-figure { display: flex; align-items: center; justify-content: center; min-width: 0; padding: 1rem; background: #fff; border: 1px solid var(--border-light); }
+      .research-figure img { display: block; width: 100%; height: auto; max-height: 300px; object-fit: contain; }
+      .research-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-bottom: 0.65rem; font: 500 0.875rem/1.5 var(--reading-font); color: var(--accent); }
+      .research-meta span + span { color: #555; }
+      .research-copy h3 { font: 600 1.375rem/1.35 var(--reading-font); letter-spacing: -0.025em; }
+      .research-summary { margin: 0.75rem 0; font-size: 1.25rem; line-height: 1.45; }
+      .research-authors { color: #555; font-size: 1rem; line-height: 1.5; }
+      .research-links { display: flex; gap: 1.25rem; margin-top: 0.75rem; font: 500 0.875rem/1.6 var(--reading-font); }
+      .research-links a, .research-all { color: var(--accent); text-underline-offset: 4px; }
+      .research-links a:hover, .research-all:hover { text-decoration: underline; }
+      .research-all { display: inline-block; margin-top: 1.25rem; font: 500 0.95rem/1.5 var(--reading-font); }
+      .pub-title-links { margin-top: 0.35rem; }
+      .pub-header { padding: 1.35rem 1.5rem; }
+      .pub-filter-btn { font-size: 0.875rem; }
+      @media (min-width: 901px) {
+        .main-content { padding-left: 6rem; }
+      }
+      @media (max-width: 1100px) and (min-width: 901px) {
+        :root { --sidebar-width: 250px; --content-padding: 2rem; }
+        .research-feature { grid-template-columns: 1fr; gap: 1.25rem; }
+        .research-figure img { max-height: 280px; width: auto; max-width: 100%; object-fit: contain; }
+      }
+      @media (max-width: 900px) {
+        .sidebar { padding-bottom: 2rem; }
+        .intro-text p:not(.intro-lead) { font-size: 1.1875rem; }
+        .intro-container { margin-bottom: 2.5rem; }
+        .research-feature { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.75rem 0; }
+        .research-figure img { max-height: 300px; width: auto; max-width: 100%; object-fit: contain; }
+        .research-copy h3, .pub-title { font-size: 1.25rem; }
+        .pub-header { padding: 1rem; }
+        .pub-inner { padding: 1rem; }
+        .section-header { gap: 0.75rem; font-size: 1.25rem; }
+        .pub-title-links { margin-left: 0; gap: 0.5rem; }
+        .pub-title-links .text-btn { padding: 5px 9px; }
+        .research-summary { font-size: 1.1875rem; }
+        section { margin-bottom: 3rem; }
+      }
     </style>
   </head>
 
@@ -1686,12 +1730,15 @@
       <button class="contents-toggle" id="contentsToggle" type="button" aria-label="Contents" aria-expanded="false" aria-controls="sectionNav">Contents</button>
     </div>
 
+
+
     <nav class="nav-links" id="sectionNav" aria-label="Sections">
       <span class="nav-focus" aria-hidden="true"></span>
       <span class="nav-ripple" aria-hidden="true"></span>
+      <a href="#research" class="nav-item" draggable="false" aria-label="Selected research"><span class="nav-item__label">Research</span></a>
       <a href="#news" class="nav-item" draggable="false" aria-label="News"><span class="nav-item__label">News</span></a>
-      <a href="#education" class="nav-item" draggable="false" aria-label="Education"><span class="nav-item__label">Education</span></a>
       <a href="#publications" class="nav-item" draggable="false" aria-label="Publications"><span class="nav-item__label">Publications</span></a>
+      <a href="#education" class="nav-item" draggable="false" aria-label="Education"><span class="nav-item__label">Education</span></a>
       <a href="#experience" class="nav-item" draggable="false" aria-label="Experience"><span class="nav-item__label">Experience</span></a>
       <a href="#teaching" class="nav-item" draggable="false" aria-label="Teaching"><span class="nav-item__label">Teaching</span></a>
       <a href="#services" class="nav-item" draggable="false" aria-label="Services"><span class="nav-item__label">Services</span></a>
@@ -1755,6 +1802,7 @@
           {% endif %}
           </div>
         </div>
+
       </aside>
 
       <main class="main-content">
@@ -1772,9 +1820,35 @@
           </div>
         </div>
 
-        <section id="news">
+        <section id="research" aria-labelledby="research-title">
           <div class="section-header">
             <span class="section-num">01</span>
+            <h2 id="research-title">Selected Research</h2>
+          </div>
+          {% assign selected = home.publications | where_exp: "pub", "pub.feature_order != nil" | sort: "feature_order" %}
+          {% for pub in selected %}
+          <article class="research-feature">
+            <a class="research-figure" href="{{ pub.pdf_url }}" target="_blank" rel="noopener" aria-label="Read {{ pub.title | strip_html | escape }}">
+              <img src="{{ pub.feature_image | relative_url }}" alt="{{ pub.feature_alt | escape }}" width="{{ pub.feature_width }}" height="{{ pub.feature_height }}" loading="lazy" decoding="async">
+            </a>
+            <div class="research-copy">
+              <div class="research-meta"><span>{{ pub.feature_topic }}</span><span>{{ pub.venue }}</span></div>
+              <h3><a href="{{ pub.pdf_url }}" target="_blank" rel="noopener">{{ pub.title }}</a></h3>
+              <p class="research-summary">{{ pub.contribution }}</p>
+              <p class="research-authors">{{ pub.authors }}</p>
+              <div class="research-links">
+                <a href="{{ pub.pdf_url }}" target="_blank" rel="noopener">Paper ↗</a>
+                {% if pub.code_url and pub.code_url != "" %}<a href="{{ pub.code_url }}" target="_blank" rel="noopener">Code ↗</a>{% endif %}
+              </div>
+            </div>
+          </article>
+          {% endfor %}
+          <a class="research-all" href="#publications">Browse all publications ↓</a>
+        </section>
+
+        <section id="news">
+          <div class="section-header">
+            <span class="section-num">02</span>
             <span>Latest News</span>
           </div>
 
@@ -1807,29 +1881,6 @@
             <span class="news-more-faces" aria-hidden="true"><span>Show earlier</span><span>Show less</span></span>
           </button>
           {% endif %}
-        </section>
-
-        <section id="education">
-          <div class="section-header">
-            <span class="section-num">02</span>
-            <span>Education</span>
-          </div>
-
-          <div class="timeline-container">
-            {% for edu in home.education %}
-            <div class="timeline-block{% if edu.ongoing %} timeline-block--current{% endif %}">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">{{ edu.period }}</div>
-              <div class="timeline-content">
-                <h3>{{ edu.institution }}</h3>
-                <span class="timeline-role">{{ edu.role }}</span>
-                {% if edu.details %}
-                <div class="timeline-desc">{{ edu.details }}</div>
-                {% endif %}
-              </div>
-            </div>
-            {% endfor %}
-          </div>
         </section>
 
         <section id="publications">
@@ -2028,9 +2079,32 @@
           </div>
         </section>
 
-        <section id="experience">
+        <section id="education">
           <div class="section-header">
             <span class="section-num">04</span>
+            <span>Education</span>
+          </div>
+
+          <div class="timeline-container">
+            {% for edu in home.education %}
+            <div class="timeline-block{% if edu.ongoing %} timeline-block--current{% endif %}">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">{{ edu.period }}</div>
+              <div class="timeline-content">
+                <h3>{{ edu.institution }}</h3>
+                <span class="timeline-role">{{ edu.role }}</span>
+                {% if edu.details %}
+                <div class="timeline-desc">{{ edu.details }}</div>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section id="experience">
+          <div class="section-header">
+            <span class="section-num">05</span>
             <span>Experience</span>
           </div>
 
@@ -2053,7 +2127,7 @@
 
         <section id="teaching">
           <div class="section-header">
-            <span class="section-num">05</span>
+            <span class="section-num">06</span>
             <span>Teaching</span>
           </div>
 
@@ -2069,7 +2143,7 @@
 
         <section id="services">
           <div class="section-header">
-            <span class="section-num">06</span>
+            <span class="section-num">07</span>
             <span>Services</span>
           </div>
 
@@ -2085,7 +2159,7 @@
 
         <section id="awards">
           <div class="section-header">
-            <span class="section-num">07</span>
+            <span class="section-num">08</span>
             <span>Honors &amp; Awards</span>
           </div>
 
@@ -2122,7 +2196,7 @@
 
         <section id="life">
           <div class="section-header">
-            <span class="section-num">08</span>
+            <span class="section-num">09</span>
             <span>Life &amp; Noise</span>
           </div>
 
@@ -2537,7 +2611,7 @@
         const ripple = nav.querySelector('.nav-ripple');
         let rippleAnimation = null;
         const abbreviations = {
-          news: 'NWS', education: 'EDU', publications: 'PUB', experience: 'EXP',
+          research: 'RSH', news: 'NWS', education: 'EDU', publications: 'PUB', experience: 'EXP',
           teaching: 'TCH', services: 'SRV', awards: 'HNR', life: 'L&N'
         };
         links.forEach(link => {
